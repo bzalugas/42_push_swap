@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/02/26 16:14:32 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/02/26 18:55:48 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,7 @@ LIBFTDIR	:=	libft
 
 LIBFT		:=	libft.a
 
-SRC			:=	push_swap.c
+SRC			:=	push_swap.c frame_handling.c op_push.c op_rotate.c op_swap.c
 
 OBJ			:=	$(SRC:.c=.o)
 
@@ -32,7 +32,7 @@ OBJ			:=	$(addprefix $(OBJDIR)/, $(OBJ))
 
 CC			:=	cc
 
-CFLAGS		:=	-Wall -Wextra -Werror -MMD
+CFLAGS		:=	-Wall -Wextra -Werror -MMD -g
 
 ########### COLORS ##########
 
@@ -53,13 +53,8 @@ $(LIBFTDIR)/$(LIBFT):
 						@echo $(GREEN)"Compiling libft"$(RESET)
 						@make -C $(LIBFTDIR)
 
-$(OBJDIR)/$(LIBFT):		$(LIBFTDIR)/$(LIBFT) | $(OBJDIR)
-						@echo $(GREEN)"Copying libft"
-						cp $(LIBFTDIR)/$(LIBFT) $(OBJDIR)/$(LIBFT)
-						@echo $(RESET)
-
-$(NAME):				$(OBJDIR)/$(LIBFT) $(OBJ)
-						$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) -o $(NAME)
+$(NAME):				$(LIBFTDIR)/$(LIBFT) $(OBJ)
+						$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) -o $(NAME) -L$(LIBFTDIR) -lft
 
 bonus:					$(NAME)
 

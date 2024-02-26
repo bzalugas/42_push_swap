@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:16:59 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/26 18:05:17 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/26 19:07:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	rotate(t_frame **top, t_frame **bottom)
 {
 	t_frame	*tmp;
 
-	if (!*top || !*bottom)
+	if (!*top)
+		return ;
+	if (!(*top)->next)
 		return ;
 	tmp = (*top)->next;
 	(*bottom)->next = *top;
