@@ -3,3 +3,4 @@
 *.o
 *~
 push_swap
+obj/
