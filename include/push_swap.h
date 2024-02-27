@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/27 13:42:48 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:11:11 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,12 @@ void	ss(t_stacks *stacks);
 void	pa(t_stacks *stacks);
 void	pb(t_stacks *stacks);
 
-void	rotate(t_frame **top, t_frame **bottom);
-void	rr(t_frame **a, t_frame **bot_a, t_frame **b, t_frame **bot_b);
+void	ra(t_stacks *s);
+void	rb(t_stacks *s);
+void	rr(t_stacks *s);
 
-void	rrotate(t_frame **top, t_frame **bottom);
-void	rrr(t_frame **a, t_frame **bot_a, t_frame **b, t_frame **bot_b);
+void	rra(t_stacks *s);
+void	rrb(t_stacks *s);
+void	rrr(t_stacks *s);
 
 #endif
