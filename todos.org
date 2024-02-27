@@ -9,9 +9,12 @@ DEADLINE: <2024-03-15 Fri>
 :Effort:   70:00
 :END:
 :LOGBOOK:
+CLOCK: [2024-02-27 Tue 12:01]--[2024-02-27 Tue 14:42] =>  2:41
 CLOCK: [2024-02-26 Mon 18:37]--[2024-02-26 Mon 19:19] =>  0:42
 CLOCK: [2024-02-26 Mon 16:30]--[2024-02-26 Mon 18:24] =>  1:54
 CLOCK: [2024-02-26 Mon 12:56]--[2024-02-26 Mon 13:17] =>  0:21
 CLOCK: [2024-02-26 Mon 12:00]--[2024-02-26 Mon 12:55] =>  0:55
 :END:
+*** TODO fix rotate problem
+*** TODO fix possible display problem
 ** IN PROGRESS think/test/etc

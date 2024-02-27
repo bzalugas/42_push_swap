@@ -6,16 +6,20 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/26 19:03:47 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:41:35 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	display_stacks(t_frame *a, t_frame *b)
+void	display_stacks(t_stacks *s)
 {
 	int	i;
+	t_frame	*a;
+	t_frame	*b;
 
+	a = s->a->top;
+	b = s->b->top;
 	i = -1;
 	if (a)
 		i = a->i;
@@ -46,60 +50,59 @@ int	main(int ac, char *av[])
 {
 	(void)ac;
 	(void)av;
-	t_frame	*top_a;
-	t_frame	*bot_a;
-	t_frame	*top_b;
-	t_frame	*bot_b;
+	t_stacks	s;
 
-	top_b = NULL;
-	bot_b = NULL;
-	if (!stack_add(&top_a, &bot_a, 2))
-		return (-1);
-	if (!stack_add(&top_a, &bot_a, 4))
-		return (-1);
-	if (!stack_add(&top_a, &bot_a, 6))
-		return (-1);
-	if (!stack_add(&top_a, &bot_a, 8))
-		return (-1);
-	if (!stack_add(&top_a, &bot_a, 10))
-		return (-1);
-	if (!stack_add(&top_a, &bot_a, 12))
-		return (-1);
-	display_stacks(top_a, top_b);
+	s = stacks_new();
 
-	push(&top_a, &top_b);
-	display_stacks(top_a, top_b);
+	if (!stacks_add_a(&s, 2))
+		return (stacks_clear(&s), -1);
+	if (!stacks_add_a(&s, 4))
+		return (stacks_clear(&s), -1);
+	if (!stacks_add_a(&s, 6))
+		return (stacks_clear(&s), -1);
+	if (!stacks_add_a(&s, 8))
+		return (stacks_clear(&s), -1);
+	if (!stacks_add_a(&s, 10))
+		return (stacks_clear(&s), -1);
+	if (!stacks_add_a(&s, 12))
+		return (stacks_clear(&s), -1);
+	display_stacks(&s);
 
-	push(&top_a, &top_b);
-	push(&top_a, &top_b);
-	display_stacks(top_a, top_b);
+	pb(&s);
+	display_stacks(&s);
 
-	swap(&top_a);
-	display_stacks(top_a, top_b);
+	pb(&s);
+	display_stacks(&s);
 
-	swap(&top_b);
-	display_stacks(top_a, top_b);
+	pb(&s);
+	display_stacks(&s);
 
-	ss(&top_a, &top_b);
-	display_stacks(top_a, top_b);
+	sa(&s);
+	display_stacks(&s);
 
-	rotate(&top_a, &bot_a);
-	display_stacks(top_a, top_b);
+	sb(&s);
+	display_stacks(&s);
 
-	rotate(&top_b, &bot_b);
-	display_stacks(top_a, top_b);
+	ss(&s);
+	display_stacks(&s);
 
-	rr(&top_a, &bot_a, &top_b, &bot_b);
-	display_stacks(top_a, top_b);
+	ra(&s);//problem rotate
+	display_stacks(&s);
 
-	rrotate(&top_a, &bot_a);
-	display_stacks(top_a, top_b);
+	rb(&s);
+	display_stacks(&s);
 
-	rrotate(&top_b, &bot_b);
-	display_stacks(top_a, top_b);
+	rr(&s);
+	display_stacks(&s);
 
-	rrr(&top_a, &bot_a, &top_b, &bot_b);
-	display_stacks(top_a, top_b);
+	rra(&s);
+	display_stacks(&s);
+
+	rrb(&s);
+	display_stacks(&s);
+
+	rrr(&s);
+	display_stacks(&s);
 
 	return (0);
 }
