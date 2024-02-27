@@ -6,24 +6,37 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:55:37 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/26 18:58:40 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:56:14 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	push(t_frame **from, t_frame **to)
+static void	push(t_stack *from, t_stack *to)
 {
 	t_frame	*tmp;
 
-	if (!*from)
+	if (from->size < 1)
 		return ;
-	tmp = (*from)->next;
-	(*from)->next = *to;
-	*to = *from;
-	*from = tmp;
-	if ((*to)->next)
-		(*to)->i = (*to)->next->i + 1;
-	else
-		(*to)->i = 0;
+	tmp = from->top->next;
+	from->top->next = to->top;
+	to->top = from->top;
+	to->size++;
+	from->top = tmp;
+	from->size--;
+	if (from->size == 0)
+		from->bot = NULL;
+	if (to->size == 1)
+		to->bot = to->top;
+	to->top->i = to->size - 1;
+}
+
+void	pa(t_stacks *stacks)
+{
+	push(stacks->b, stacks->a);
+}
+
+void	pb(t_stacks *stacks)
+{
+	push(stacks->a, stacks->b);
 }

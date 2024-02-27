@@ -6,30 +6,40 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:03:53 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/26 17:47:50 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:48:38 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	swap(t_frame **top)
+static void	swap(t_stack *s)
 {
 	t_frame	*tmp;
-	int		index_top;
 
-	if (!*top || !(*top)->next)
+	if (s->size < 2)
 		return ;
-	tmp = (*top)->next;
-	(*top)->next = (*top)->next->next;
-	tmp->next = *top;
-	index_top = (*top)->i;
-	(*top)->i = tmp->i;
-	tmp->i = index_top;
-	*top = tmp;
+	tmp = s->top->next;
+	s->top->next = s->top->next->next;
+	tmp->next = s->top;
+	s->top->i--;
+	tmp->i++;
+	if (s->bot == tmp)
+		s->bot = s->top;
+	s->top = tmp;
 }
 
-void	ss(t_frame **a, t_frame **b)
+void	sa(t_stacks *stacks)
 {
-	swap(a);
-	swap(b);
+	swap(stacks->a);
+}
+
+void	sb(t_stacks *stacks)
+{
+	swap(stacks->b);
+}
+
+void	ss(t_stacks *stacks)
+{
+	sa(stacks);
+	sb(stacks);
 }
