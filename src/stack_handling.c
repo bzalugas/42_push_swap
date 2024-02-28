@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:31:34 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/27 13:53:21 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:56:34 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	stack_update_i(t_stack *stack)
 	int		i;
 
 	top = stack->top;
-	i = stack->size;
+	i = stack->size - 1;
 	while (i >= 0 && top && top->i != i)
 	{
 		top->i = i;
