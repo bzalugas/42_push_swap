@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:05:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/27 13:45:13 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:14:10 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stacks	stacks_new()
 
 int	stacks_add_a(t_stacks *stacks, int n)
 {
-	return (stack_add(stacks->a, n));
+	return (stack_add_back(stacks->a, n));
 }
 
 void	*stacks_clear(t_stacks *stacks)

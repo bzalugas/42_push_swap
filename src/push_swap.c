@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/28 12:52:41 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:55:21 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,34 @@
 
 void	display_stacks(t_stacks *s)
 {
-	int	i;
 	t_frame	*a;
 	t_frame	*b;
+	int		i;
 
 	a = s->a->top;
 	b = s->b->top;
-	i = -1;
-	if (a)
-		i = a->i;
-	else if (b && b->i > i)
-		i = b->i;
-	else
-		return ;
+	i = 0;
+	if (s->a)
+		i = s->a->size;
+	if (s->b && s->b->size > i)
+		i = s->b->size;
 	write(1, "\n\n", 2);
 	while ((a || b) && i >= 0)
 	{
-		if (a && a->i == i)
+		if (a && s->a->size - i >= 0)
 		{
-			ft_printf("%d", a->n);
+			ft_printf("%2d", a->n);
 			a = a->next;
 		}
-		if (b && b->i == i)
+		if (b && s->b->size - i >= 0)
 		{
-			ft_printf(" %d", b->n);
+			ft_printf(" %2d", b->n);
 			b = b->next;
 		}
 		write(1, "\n", 1);
 		i--;
 	}
-	write(1, "_ _\na b\n\n\n", 10);
+	ft_printf("_   _\na   b\n\n\n");
 }
 
 int	tests()
@@ -128,10 +126,29 @@ int	tests()
 	return (0);
 }
 
+/* int	finish_error(t_stacks *s) */
+/* { */
+/* 	stacks_clear(s); */
+/* 	ft_putendl_fd("Error", 2); */
+/* 	return (-1); */
+/* } */
+
+/* int	parse(int ac, char	*av[], t_stacks *s) */
+/* { */
+/* 	return (0); */
+/* } */
+
 int	main(int ac, char *av[])
 {
 	(void)ac;
 	(void)av;
+	/* t_stacks	s; */
+
+	/* if (ac < 2) */
+	/* 	return (-1); */
+	/* s = stacks_new(); */
+	/* if (!parse(ac, av, &s)) */
+	/* 	return (finish_error(&s)); */
 	tests();
 	return (0);
 }

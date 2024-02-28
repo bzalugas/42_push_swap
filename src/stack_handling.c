@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:31:34 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/28 10:56:34 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:13:56 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_stack	*stack_new()
 	return (new);
 }
 
-int	stack_add(t_stack *stack, int n)
+int	stack_add_back(t_stack *stack, int n)
 {
 	t_frame	*new;
 	int		i;
@@ -39,7 +39,7 @@ int	stack_add(t_stack *stack, int n)
 	i = 0;
 	if (stack->top)
 		i = stack->top->i + 1;
-	new = frame_new(n, i, stack->top);
+	new = frame_new(n, i, NULL);
 	stack->size++;
 	if (!stack->top)
 	{
@@ -47,8 +47,8 @@ int	stack_add(t_stack *stack, int n)
 		stack->bot = new;
 		return (1);
 	}
-	new->next = stack->top;
-	stack->top = new;
+	stack->bot->next = new;
+	stack->bot = new;
 	return (1);
 }
 
@@ -68,11 +68,11 @@ void	stack_update_i(t_stack *stack)
 	int		i;
 
 	top = stack->top;
-	i = stack->size - 1;
-	while (i >= 0 && top && top->i != i)
+	i = 0;
+	while (i < stack->size && top)
 	{
 		top->i = i;
 		top = top->next;
-		i--;
+		i++;
 	}
 }

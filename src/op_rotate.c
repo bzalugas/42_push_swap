@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:16:59 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/27 14:10:47 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:59:38 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static void	rotate(t_stack *s)
 
 	if (s->size < 2)
 		return ;
-	/* if (s->size == 2) */
-	/* 	swap(s); */
 	tmp = s->top->next;
 	s->top->next = NULL;
 	s->bot->next = s->top;
@@ -48,11 +46,9 @@ static void	rrotate(t_stack *s)
 {
 	if (s->size < 2)
 		return ;
-	/* if (s->size == 2) */
-	/* 	swap(s); */
 	s->bot->next = s->top;
 	s->top = s->bot;
-	s->bot = stack_get_frame_i(s, 1);
+	s->bot = stack_get_frame_i(s, s->size - 2);
 	s->bot->next = NULL;
 	stack_update_i(s);
 }

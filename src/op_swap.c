@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:03:53 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/27 13:48:38 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:29:11 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	swap(t_stack *s)
 	tmp = s->top->next;
 	s->top->next = s->top->next->next;
 	tmp->next = s->top;
-	s->top->i--;
-	tmp->i++;
+	s->top->i++;
+	tmp->i--;
 	if (s->bot == tmp)
 		s->bot = s->top;
 	s->top = tmp;

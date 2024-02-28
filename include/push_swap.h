@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/27 14:13:58 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:14:05 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_stacks
 
 t_frame		*frame_new(int n, int i, t_frame *next);
 t_stack		*stack_new();
-int			stack_add(t_stack *stack, int n);
+int			stack_add_back(t_stack *stack, int n);
 t_frame		*stack_get_frame_i(t_stack *stack, int i);
 void		stack_update_i(t_stack *stack);
 
