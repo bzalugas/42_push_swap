@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/28 15:14:05 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:41:48 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_stacks
 	t_stack	*b;
 }				t_stacks;
 
-
+/***************************** STACKS HANDLING ********************************/
 
 t_frame		*frame_new(int n, int i, t_frame *next);
 t_stack		*stack_new();
@@ -69,5 +69,9 @@ void	rr(t_stacks *s);
 void	rra(t_stacks *s);
 void	rrb(t_stacks *s);
 void	rrr(t_stacks *s);
+
+/********************************** UTILS *************************************/
+
+long	ft_atol_forward(const char *nptr, int *i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/28 14:55:21 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:56:07 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	display_stacks(t_stacks *s)
 	{
 		if (a && s->a->size - i >= 0)
 		{
-			ft_printf("%2d", a->n);
+			ft_printf("%-2d", a->n);
 			a = a->next;
 		}
 		if (b && s->b->size - i >= 0)
 		{
-			ft_printf(" %2d", b->n);
+			ft_printf(" %-2d", b->n);
 			b = b->next;
 		}
 		write(1, "\n", 1);
@@ -126,29 +126,48 @@ int	tests()
 	return (0);
 }
 
-/* int	finish_error(t_stacks *s) */
-/* { */
-/* 	stacks_clear(s); */
-/* 	ft_putendl_fd("Error", 2); */
-/* 	return (-1); */
-/* } */
+int	finish_error(t_stacks *s)
+{
+	stacks_clear(s);
+	ft_putendl_fd("Error", 2);
+	return (-1);
+}
 
-/* int	parse(int ac, char	*av[], t_stacks *s) */
-/* { */
-/* 	return (0); */
-/* } */
+int	parse(int ac, char	*av[], t_stacks *s)
+{
+	int		i;
+	int		j;
+	int		tmp;
+	long	n;
+
+	i = 1;
+	j = 0;
+	while (av[i] && av[i][j])
+	{
+		n = ft_atol_forward(av[i], &tmp);
+		if (n > INT_MAX || n < INT_MIN || tmp == 0)
+			return (0);
+		stacks_add_a(s, (int)n);
+		if (ac == 2)
+			j += tmp;
+		else
+			i++;
+	}
+	return (1);
+}
 
 int	main(int ac, char *av[])
 {
-	(void)ac;
-	(void)av;
-	/* t_stacks	s; */
+	t_stacks	s;
 
-	/* if (ac < 2) */
-	/* 	return (-1); */
-	/* s = stacks_new(); */
-	/* if (!parse(ac, av, &s)) */
-	/* 	return (finish_error(&s)); */
-	tests();
+	if (ac < 2)
+		return (-1);
+	s = stacks_new();
+	if (!parse(ac, av, &s))
+		return (finish_error(&s));
+	display_stacks(&s);
+	/* (void)ac; */
+	/* (void)av; */
+	/* tests(); */
 	return (0);
 }
