@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/27 14:41:35 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/28 12:52:41 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ void	display_stacks(t_stacks *s)
 	write(1, "_ _\na b\n\n\n", 10);
 }
 
-int	main(int ac, char *av[])
+int	tests()
 {
-	(void)ac;
-	(void)av;
 	t_stacks	s;
 
 	s = stacks_new();
@@ -69,40 +67,71 @@ int	main(int ac, char *av[])
 	display_stacks(&s);
 
 	pb(&s);
+	ft_printf("pb\n");
 	display_stacks(&s);
 
 	pb(&s);
+	ft_printf("pb\n");
 	display_stacks(&s);
 
 	pb(&s);
+	ft_printf("pb\n");
 	display_stacks(&s);
 
 	sa(&s);
+	ft_printf("sa\n");
 	display_stacks(&s);
 
 	sb(&s);
+	ft_printf("sb\n");
 	display_stacks(&s);
 
 	ss(&s);
+	ft_printf("ss\n");
 	display_stacks(&s);
 
-	ra(&s);//problem rotate
+	ra(&s);
+	ft_printf("ra\n");
 	display_stacks(&s);
 
 	rb(&s);
+	ft_printf("rb\n");
 	display_stacks(&s);
 
 	rr(&s);
+	ft_printf("rr\n");
 	display_stacks(&s);
 
 	rra(&s);
+	ft_printf("rra\n");
 	display_stacks(&s);
 
 	rrb(&s);
+	ft_printf("rrb\n");
 	display_stacks(&s);
 
 	rrr(&s);
+	ft_printf("rrr\n");
 	display_stacks(&s);
 
+	pa(&s);
+	ft_printf("pa\n");
+	display_stacks(&s);
+
+	pa(&s);
+	ft_printf("pa\n");
+	display_stacks(&s);
+
+	pa(&s);
+	ft_printf("pa\n");
+	display_stacks(&s);
+	return (0);
+}
+
+int	main(int ac, char *av[])
+{
+	(void)ac;
+	(void)av;
+	tests();
 	return (0);
 }
