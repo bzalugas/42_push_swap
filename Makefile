@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/02/28 11:09:43 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/02/28 11:13:40 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -48,7 +48,7 @@ $(OBJDIR):
 			@mkdir -p $(OBJDIR)
 
 $(OBJDIR)/%.o:		$(SRCDIR)/%.c | $(OBJDIR)
-			@echo $(GREEN)"Compiling "$<$(RESET)
+			@echo $(GREEN)"Compiling "$< "to "$@$(RESET)
 			@$(CC) $(CFLAGS) -I$(INCDIR) -o $@ -c $<
 
 $(LIBFTDIR)/$(LIBFT):
@@ -56,7 +56,7 @@ $(LIBFTDIR)/$(LIBFT):
 			@make -C $(LIBFTDIR)
 
 $(NAME):		$(LIBFTDIR)/$(LIBFT) $(OBJ)
-			@echo $(GREEN)"Linking objects"$(RESET)
+			@echo $(GREEN)"Linking objects & creating program"$(RESET)
 			$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) -o $(NAME) -L$(LIBFTDIR) -lft
 
 bonus:			$(NAME)
