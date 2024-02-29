@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/29 10:13:54 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:23:42 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int	finish_error(t_stacks *s)
 {
 	stacks_clear(s);
 	ft_putendl_fd("Error", 2);
-	return (-1);
+	return (1);
 }
 
 int	parse(int ac, char *av[], t_stacks *s)
@@ -167,7 +167,7 @@ int	main(int ac, char *av[])
 	t_stacks	s;
 
 	if (ac < 2)
-		return (-1);
+		return (1);
 	s = stacks_new();
 	if (!parse(ac, av, &s))
 		return (finish_error(&s));

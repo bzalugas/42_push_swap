@@ -6,20 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/29 10:07:26 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:58:32 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
-
-typedef enum e_stackname
-{
-	A,
-	B,
-	C
-}			t_stackname;
 
 typedef struct s_frame
 {
