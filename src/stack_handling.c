@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:31:34 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/28 15:13:56 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:07:42 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	stack_add_back(t_stack *stack, int n)
 	return (1);
 }
 
-t_frame	*stack_get_frame_i(t_stack *stack, int i)
+t_frame	*stack_get_i(t_stack *stack, int i)
 {
 	t_frame	*top;
 

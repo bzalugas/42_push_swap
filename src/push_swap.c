@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/28 15:56:07 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:13:54 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	finish_error(t_stacks *s)
 	return (-1);
 }
 
-int	parse(int ac, char	*av[], t_stacks *s)
+int	parse(int ac, char *av[], t_stacks *s)
 {
 	int		i;
 	int		j;
@@ -144,14 +144,20 @@ int	parse(int ac, char	*av[], t_stacks *s)
 	j = 0;
 	while (av[i] && av[i][j])
 	{
-		n = ft_atol_forward(av[i], &tmp);
-		if (n > INT_MAX || n < INT_MIN || tmp == 0)
+		n = ft_atol_forward(&av[i][j], &tmp);
+		if (n > INT_MAX || n < INT_MIN || tmp == -1 || stack_get_n(s->a, n))
 			return (0);
 		stacks_add_a(s, (int)n);
 		if (ac == 2)
 			j += tmp;
 		else
+		{
+			if (av[i][tmp] != '\0')
+				return (0);
 			i++;
+			j = 0;
+		}
+
 	}
 	return (1);
 }
@@ -166,6 +172,7 @@ int	main(int ac, char *av[])
 	if (!parse(ac, av, &s))
 		return (finish_error(&s));
 	display_stacks(&s);
+	stacks_clear(&s);
 	/* (void)ac; */
 	/* (void)av; */
 	/* tests(); */
