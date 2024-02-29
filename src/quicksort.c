@@ -41,7 +41,7 @@ static int	partition(int *arr, int l, int r)
 	j = l;
 	while (j < r)
 	{
-		if (arr[j] < arr[p] && ++i != j)
+		if (arr[j] < arr[p] && ++i != j)//don't increment everytime!!!
 		{
 			printf("swap\n");
 			swap(&arr[i], &arr[j]);
