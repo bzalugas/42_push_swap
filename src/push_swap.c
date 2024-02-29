@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/29 14:23:42 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:00:08 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,8 @@ int	parse(int ac, char *av[], t_stacks *s)
 {
 	int		i;
 	int		j;
-	int		tmp;
 	long	n;
+	int		tmp;
 
 	i = 1;
 	j = 0;
@@ -148,17 +148,17 @@ int	parse(int ac, char *av[], t_stacks *s)
 		if (n > INT_MAX || n < INT_MIN || tmp == -1 || stack_get_n(s->a, n))
 			return (0);
 		stacks_add_a(s, (int)n);
-		if (ac == 2)
-			j += tmp;
-		else
+		j += tmp;
+		if (ac > 2)
 		{
-			if (av[i][tmp] != '\0')
+			if (av[i][j] != '\0')
 				return (0);
 			i++;
 			j = 0;
 		}
-
 	}
+	if (ac > 2 && i < ac)
+		return (0);
 	return (1);
 }
 
