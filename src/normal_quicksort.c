@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quicksort.c                                        :+:      :+:    :+:   */
+/*   normal_quicksort.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 12:24:20 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/29 16:12:25 by bazaluga         ###   ########.fr       */
+/*   Created: 2024/03/05 09:50:07 by bazaluga          #+#    #+#             */
+/*   Updated: 2024/03/05 09:50:11 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ static int	partition(int *arr, int l, int r)
 	j = l;
 	while (j < r)
 	{
-		if (arr[j] < arr[p] && ++i != j)//don't increment everytime!!!
+		if (arr[j] < arr[p])
 		{
+			i++;
 			printf("swap\n");
-			swap(&arr[i], &arr[j]);
+			if (i != j)
+				swap(&arr[i], &arr[j]);
 		}
 
 		j++;
@@ -59,23 +61,38 @@ void	quicksort(int *arr, int l, int r)
 	int	p;
 
 	/* printf("\033[31mquicksort\n\033[0m"); */
-	if (l >= r)
+	if (l >= r || l < 0)
 		return ;
 	p = partition(arr, l, r);
 	quicksort(arr, l, p - 1);
-	quicksort(arr, p, r);
+	quicksort(arr, p + 1, r);
 }
 #include <ctype.h>
+
+int check(int *arr, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len - 1)
+	{
+		if (arr[i] > arr[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int main(int ac, char *av[])
 {
 	(void)ac;
 	int i = 0;
 	int j = 0;
 	int arr[500];
-	while (av[1][i])
+	while (av[1][i] && j < 500)
 	{
 		arr[j] = atoi(&av[1][i]);
-		while (av[1][i] && isdigit(av[1][i]))
+		while (av[1][i] && (isdigit(av[1][i]) || av[1][i] == '-'))
 			i++;
 		i++;
 		j++;
@@ -87,5 +104,9 @@ int main(int ac, char *av[])
 	quicksort(&arr[0], 0, len - 1);
 	/* printf("After : "); */
 	/* display_arr(arr, len); */
+	/* if (check(arr, len)) */
+	/* 	printf("\n\nOK\n"); */
+	/* else */
+	/* 	printf("\n\nKO\n"); */
 	return (0);
 }
