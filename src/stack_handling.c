@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:31:34 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/29 10:07:42 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:40:00 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ int	stack_add_back(t_stack *stack, int n)
 	t_frame	*new;
 	int		i;
 
-	i = 0;
-	if (stack->top)
-		i = stack->top->i + 1;
+	i = stack->size;
 	new = frame_new(n, i, NULL);
 	stack->size++;
 	if (!stack->top)
