@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/05 10:41:01 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:57:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,14 +126,14 @@ int	tests()
 	return (0);
 }
 
-int	finish_error(t_stacks *s)
+static int	finish_error(t_stacks *s)
 {
 	stacks_clear(s);
 	ft_putendl_fd("Error", 2);
 	return (1);
 }
 
-int	parse(int ac, char *av[], t_stacks *s)
+static int	parse(int ac, char *av[], t_stacks *s)
 {
 	int		i;
 	int		j;
