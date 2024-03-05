@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 09:53:52 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/05 10:28:59 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:34:43 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,20 @@ static void	swap_adj_els(t_stacks *s, t_frame *f1)
 			ra(s);
 		count--;
 	}
+}
+
+static void	pushb_el(t_stacks *s, t_frame *f1)
+{
+	char	op;
+
+	op = 1;
+	if (f1->i >= s->a->size / 2)
+		op = 2;
+}
+
+static void	swap_els(t_stacks *s, t_frame *f1, t_frame *f2)
+{
+
 }
 
 void	stack_swap_els(t_stacks *s, int i1, int i2)
