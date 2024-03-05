@@ -6,14 +6,14 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 09:50:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/05 09:50:11 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:53:18 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include <stdio.h>
 
-static void swap(int *i, int *j)
+void int_swap(int *i, int *j)
 {
 	int	tmp;
 
@@ -46,13 +46,13 @@ static int	partition(int *arr, int l, int r)
 			i++;
 			printf("swap\n");
 			if (i != j)
-				swap(&arr[i], &arr[j]);
+				int_swap(&arr[i], &arr[j]);
 		}
 
 		j++;
 	}
 	i++;
-	swap(&arr[i], &arr[r]);
+	int_swap(&arr[i], &arr[r]);
 	return (i);
 }
 

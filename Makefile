@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/02/29 10:09:23 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/03/05 10:29:42 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,7 +23,8 @@ LIBFTDIR	:=	libft
 LIBFT		:=	libft.a
 
 SRC		:=	push_swap.c op_push.c op_rotate.c op_swap.c stack_handling.c \
-			stack_handling2.c stacks_handling.c ft_atol_forward.c
+			stack_handling2.c stacks_handling.c ft_atol_forward.c \
+			translate_swap.c
 
 OBJ		:=	$(SRC:.c=.o)
 

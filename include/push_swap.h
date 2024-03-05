@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/29 12:58:32 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:30:19 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ void	rr(t_stacks *s);
 void	rra(t_stacks *s);
 void	rrb(t_stacks *s);
 void	rrr(t_stacks *s);
+
+/******************************** SORTING *************************************/
+
+void	stack_swap_els(t_stacks *s, int i1, int i2);
 
 /********************************** UTILS *************************************/
 

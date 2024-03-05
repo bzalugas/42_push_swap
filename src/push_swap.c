@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/29 16:00:08 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:41:01 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,27 @@ int	parse(int ac, char *av[], t_stacks *s)
 	return (1);
 }
 
+void	tests_sort(t_stacks *s)
+{
+	char	*n1;
+	char	*n2;
+	int		i1;
+	int		i2;
+
+	display_stacks(s);
+	n1 = get_next_line(0);
+	n2 = get_next_line(0);
+	i1 = ft_atoi(n1);
+	i2 = ft_atoi(n2);
+	free(n1);
+	free(n2);
+	/* i1 = 2; */
+	/* i2 = 3; */
+	ft_printf("swap %d & %d\n", i1, i2);
+	stack_swap_els(s, i1, i2);
+	display_stacks(s);
+}
+
 int	main(int ac, char *av[])
 {
 	t_stacks	s;
@@ -171,7 +192,8 @@ int	main(int ac, char *av[])
 	s = stacks_new();
 	if (!parse(ac, av, &s))
 		return (finish_error(&s));
-	display_stacks(&s);
+	tests_sort(&s);
+	/* display_stacks(&s); */
 	stacks_clear(&s);
 	/* (void)ac; */
 	/* (void)av; */
