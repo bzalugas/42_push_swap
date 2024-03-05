@@ -9,6 +9,7 @@ DEADLINE: <2024-03-15 Fri>
 :Effort:   70:00
 :END:
 :LOGBOOK:
+CLOCK: [2024-03-05 Tue 09:14]--[2024-03-05 Tue 09:52] =>  0:38
 CLOCK: [2024-02-29 Thu 14:47]--[2024-02-29 Thu 16:16] =>  1:29
 CLOCK: [2024-02-29 Thu 11:54]--[2024-02-29 Thu 12:55] =>  1:01
 CLOCK: [2024-02-29 Thu 09:32]--[2024-02-29 Thu 10:35] =>  1:03
@@ -23,5 +24,23 @@ CLOCK: [2024-02-26 Mon 16:30]--[2024-02-26 Mon 18:24] =>  1:54
 CLOCK: [2024-02-26 Mon 12:56]--[2024-02-26 Mon 13:17] =>  0:21
 CLOCK: [2024-02-26 Mon 12:00]--[2024-02-26 Mon 12:55] =>  0:55
 :END:
-*** CODE function to get best moves to swap elements
+*** CODING function to get best moves to swap elements
+:LOGBOOK:
+CLOCK: [2024-03-05 Tue 11:18]--[2024-03-05 Tue 11:51] =>  0:33
+CLOCK: [2024-03-05 Tue 10:58]--[2024-03-05 Tue 11:15] =>  0:17
+CLOCK: [2024-03-05 Tue 09:52]--[2024-03-05 Tue 10:48] =>  0:56
+:END:
+*** NOTES
+possible cases:
+- few numbers in stack : 3 - ?
+- already sorted stack -> nothing
+- descending nb sorted stack -> only rotatations, no swaps
+- suffled stack
+Ideas:
+- "cutting" at pivot & sorting stacks separately
+- naive approach: pushing numbers in ascending order to b then pushing all to a
+- "bubble-sort-like": push if 0 < 1 else swap then sort b
 ** IN PROGRESS think/test/etc
+:LOGBOOK:
+CLOCK: [2024-03-05 Tue 12:03]--[2024-03-05 Tue 12:56] =>  0:53
+:END:
