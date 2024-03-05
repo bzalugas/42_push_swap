@@ -42,5 +42,6 @@ Ideas:
 - "bubble-sort-like": push if 0 < 1 else swap then sort b
 ** IN PROGRESS think/test/etc
 :LOGBOOK:
+CLOCK: [2024-03-05 Tue 14:42]--[2024-03-05 Tue 15:17] =>  0:35
 CLOCK: [2024-03-05 Tue 12:03]--[2024-03-05 Tue 12:56] =>  0:53
 :END:
