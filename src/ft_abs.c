@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 20:02:04 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 15:53:15 by bazaluga         ###   ########.fr       */
+/*   Created: 2024/03/07 14:24:13 by bazaluga          #+#    #+#             */
+/*   Updated: 2024/03/07 14:24:19 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
-# include "push_swap.h"
+#include "../include/push_swap.h"
 
-#endif
+unsigned int	ft_abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
+}

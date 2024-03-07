@@ -43,6 +43,8 @@ Ideas:
 - Sorting numbers by range of 3 => sorting in the smallest stack
 ** CODING bonus
 :LOGBOOK:
+CLOCK: [2024-03-07 Thu 14:48]--[2024-03-07 Thu 16:03] =>  1:15
+CLOCK: [2024-03-07 Thu 13:40]--[2024-03-07 Thu 14:35] =>  0:55
 CLOCK: [2024-03-07 Thu 13:13]--[2024-03-07 Thu 13:40] =>  0:27
 CLOCK: [2024-03-07 Thu 12:38]--[2024-03-07 Thu 13:06] =>  0:28
 :END:

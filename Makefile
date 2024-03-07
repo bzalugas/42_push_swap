@@ -6,13 +6,15 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/03/07 13:44:31 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/03/07 15:59:28 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME		:=	push_swap
 
 NAMEB		:=	checker
+
+NAMEBE		:=	checker_enhanced
 
 SRCDIR		:=	src
 
@@ -28,9 +30,13 @@ MAIN	:=	push_swap.c
 
 MAINB	:=	checker.c
 
+SRCBE	:=	checker_enhanced.c checker_enhanced_utils.c
+
 OBJM	:=	$(MAIN:.c=.o)
 
 OBJMB	:=	$(MAINB:.c=.o)
+
+OBJBE	:=	$(SRCBE:.c=.o)
 
 MAIN	:=	$(addprefix $(SRCDIR)/, $(MAIN))
 
@@ -40,9 +46,11 @@ OBJM	:=	$(addprefix $(OBJDIR)/, $(OBJM))
 
 OBJMB	:=	$(addprefix $(OBJDIR)/, $(OBJMB))
 
+OBJBE	:=	$(addprefix $(OBJDIR)/, $(OBJBE))
+
 SRC		:=	op_push.c op_revrotate.c op_rotate.c op_swap.c stack_handling.c \
 			stack_handling2.c stacks_handling.c ft_atol_forward.c \
-			main_utils.c
+			main_utils.c ft_abs.c
 
 OBJ		:=	$(SRC:.c=.o)
 
@@ -84,7 +92,14 @@ $(NAMEB):		$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJMB)
 			$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJMB) -o $(NAMEB) -L$(LIBFTDIR) -lft
 			@echo $(RESET)
 
+$(NAMEBE):		$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJBE)
+			@echo $(GREEN)"BONUS PART: Linking objects & creating checker"
+			$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJBE) -o $(NAMEBE) -L$(LIBFTDIR) -lft
+			@echo $(RESET)
+
 bonus:		$(NAMEB)
+
+bonus2:		$(NAMEBE)
 
 clean:
 			@echo $(RED)"CLEANING OBJS"

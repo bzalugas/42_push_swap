@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_enhanced.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 19:52:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 15:43:02 by bazaluga         ###   ########.fr       */
+/*   Created: 2024/03/07 14:00:41 by bazaluga          #+#    #+#             */
+/*   Updated: 2024/03/07 16:02:46 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
+#include "../include/checker_enhanced.h"
 
-static int	get_operations(t_list **op)
+static void	display_stacks(t_stacks *s)
 {
-	char	*line;
-	t_list	*new;
+	int		i;
+	int		maxlen;
 
-	line = get_next_line(0);
-	while (line)
-	{
-		new = ft_lstnew(line);
-		if (!new)
-			return (free(line), 0);
-		ft_lstadd_back(op, new);
-		line = get_next_line(0);
-	}
-	return (1);
+	ft_putstr_fd("\033[2J", 1);
+	ft_putstr_fd("\033[H", 1);
+	maxlen = get_maxlen(s);
+	i = 0;
+	if (s->a)
+		i = s->a->size;
+	if (s->b && s->b->size > i)
+		i = s->b->size;
+	write_stacks(s, maxlen, i);
 }
 
 static int	do_fun(t_stacks *s, char *content)
@@ -58,18 +57,25 @@ static int	do_fun(t_stacks *s, char *content)
 	return (1);
 }
 
-static int	do_ops(t_stacks *s, t_list *op)
+static int	get_do_ops(t_stacks *s)
 {
-	while (op)
+	char	*line;
+	int		count;
+
+	count = 0;
+	display_stacks(s);
+	line = get_next_line(0);
+	while (line)
 	{
-		if (!do_fun(s, (char *)op->content))
-			return (0);
-		op = op->next;
+		count++;
+		do_fun(s, line);
+		display_stacks(s);
+		line = get_next_line(0);
 	}
-	return (1);
+	return (count);
 }
 
-static int	result(t_stacks *s, t_list *op, char ok)
+static int	result(t_stacks *s, int nb_op, char ok)
 {
 	t_frame	*a;
 
@@ -85,28 +91,24 @@ static int	result(t_stacks *s, t_list *op, char ok)
 			a = a->next;
 		}
 	}
-	ft_lstclear(&op, &free);
 	stacks_clear(s);
 	if (!ok)
-		ft_putendl_fd("KO", 1);
+		ft_printf("KO (%d operations)\n", nb_op);
 	else
-		ft_putendl_fd("OK", 1);
+		ft_printf("OK (%d operations)\n", nb_op);
 	return (0);
 }
 
 int	main(int ac, char *av[])
 {
 	t_stacks	s;
-	t_list		*op;
+	int			nb_op;
 
 	if (ac < 2)
 		return (1);
 	s = stacks_new();
 	if (!parse(ac, av, &s))
 		return (finish_error(&s));
-	if (!get_operations(&op))
-		return (ft_lstclear(&op, &free), 1);
-	if (!do_ops(&s, op))
-		return (result(&s, op, 0));
-	return (result(&s, op, 1));
+	nb_op = get_do_ops(&s);
+	return (result(&s, nb_op, 1));
 }
