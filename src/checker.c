@@ -6,49 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:52:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/05 20:29:43 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:32:46 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/checker.h"
 
-static int	finish_error(t_stacks *s)
-{
-	stacks_clear(s);
-	ft_putendl_fd("Error", 2);
-	return (1);
-}
-
-static int	parse(int ac, char *av[], t_stacks *s)
-{
-	int		i;
-	int		j;
-	long	n;
-	int		tmp;
-
-	i = 1;
-	j = 0;
-	while (av[i] && av[i][j])
-	{
-		n = ft_atol_forward(&av[i][j], &tmp);
-		if (n > INT_MAX || n < INT_MIN || tmp == -1 || stack_get_n(s->a, n))
-			return (0);
-		stacks_add_a(s, (int)n);
-		j += tmp;
-		if (ac > 2)
-		{
-			if (av[i][j] != '\0')
-				return (0);
-			i++;
-			j = 0;
-		}
-	}
-	if (ac > 2 && i < ac)
-		return (0);
-	return (1);
-}
-
-static int	get_operations(t_list **op)
+int	get_operations(t_list **op)
 {
 	char	*line;
 	t_list	*new;
@@ -94,7 +58,7 @@ static int do_fun(t_stacks *s, char *content)
 	return (1);
 }
 
-static int	do_ops(t_stacks *s, t_list *op)
+int	do_ops(t_stacks *s, t_list *op)
 {
 	while (op)
 	{
@@ -105,25 +69,28 @@ static int	do_ops(t_stacks *s, t_list *op)
 	return (1);
 }
 
-static int	result(t_stacks *s, t_list *op, char ok)
+int	result(t_stacks *s, t_list *op, char ok)
 {
-	t_stack	*a;
+	t_frame	*a;
 
-	a = s->a;
+	a = s->a->top;
+	if (s->b->top)
+		ok = 0;
 	if (ok)
 	{
-		while ()
+		while (ok && a && a->next)
 		{
-
+			if (a->n > a->next->n)
+				ok = 0;
+			a = a->next;
 		}
 	}
+	ft_lstclear(&op, &free);
+	stacks_clear(s);
 	if (!ok)
-	{
-		ft_lstclear(&op, &free);
-		stacks_clear(s);
 		ft_putendl_fd("KO", 1);
-		return (1);
-	}
+	else
+		ft_putendl_fd("OK", 1);
 	return (0);
 }
 
@@ -141,7 +108,5 @@ int	main(int ac, char *av[])
 		return (ft_lstclear(&op, &free), 1);
 	if (!do_ops(&s, op))
 		return (result(&s, op, 0));
-	ft_lstclear(&op, &free);
-	stacks_clear(&s);
-	return (0);
+	return (result(&s, op, 1));
 }

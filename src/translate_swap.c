@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 09:53:52 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/05 15:18:09 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:54:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,27 @@ static void	swap_adj_els(t_stacks *s, t_frame *f)
 	}
 }
 
-static void	pushb_el(t_stacks *s, t_frame *f)
-{
-	char	op;
+/* static void	pushb_el(t_stacks *s, t_frame *f) */
+/* { */
+/* 	char	op; */
 
-	op = 1;
-	if (f->i >= s->a->size / 2)
-		op = 2;
-	while (f->i > 0)
-	{
-		if (op == 1)
-			ra(s);
-		else
-			rra(s);
+/* 	op = 1; */
+/* 	if (f->i >= s->a->size / 2) */
+/* 		op = 2; */
+/* 	while (f->i > 0) */
+/* 	{ */
+/* 		if (op == 1) */
+/* 			ra(s); */
+/* 		else */
+/* 			rra(s); */
 
-	}
-}
+/* 	} */
+/* } */
 
-static void	swap_els(t_stacks *s, t_frame *f1, t_frame *f2)
-{
+/* static void	swap_els(t_stacks *s, t_frame *f1, t_frame *f2) */
+/* { */
 
-}
+/* } */
 
 void	stack_swap_els(t_stacks *s, int i1, int i2)
 {

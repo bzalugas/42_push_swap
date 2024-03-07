@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/05 19:57:04 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:31:08 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,42 +124,6 @@ int	tests()
 	ft_printf("pa\n");
 	display_stacks(&s);
 	return (0);
-}
-
-static int	finish_error(t_stacks *s)
-{
-	stacks_clear(s);
-	ft_putendl_fd("Error", 2);
-	return (1);
-}
-
-static int	parse(int ac, char *av[], t_stacks *s)
-{
-	int		i;
-	int		j;
-	long	n;
-	int		tmp;
-
-	i = 1;
-	j = 0;
-	while (av[i] && av[i][j])
-	{
-		n = ft_atol_forward(&av[i][j], &tmp);
-		if (n > INT_MAX || n < INT_MIN || tmp == -1 || stack_get_n(s->a, n))
-			return (0);
-		stacks_add_a(s, (int)n);
-		j += tmp;
-		if (ac > 2)
-		{
-			if (av[i][j] != '\0')
-				return (0);
-			i++;
-			j = 0;
-		}
-	}
-	if (ac > 2 && i < ac)
-		return (0);
-	return (1);
 }
 
 void	tests_sort(t_stacks *s)

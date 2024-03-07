@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/05 10:30:19 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:31:00 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ void	stack_swap_els(t_stacks *s, int i1, int i2);
 /********************************** UTILS *************************************/
 
 long	ft_atol_forward(const char *nptr, int *i);
+int		finish_error(t_stacks *s);
+int		parse(int ac, char *av[], t_stacks *s);
 
 #endif

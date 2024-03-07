@@ -6,11 +6,13 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/03/05 10:29:42 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/03/07 13:37:07 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME		:=	push_swap
+
+NAMEB		:=	checker
 
 SRCDIR		:=	src
 
@@ -22,9 +24,25 @@ LIBFTDIR	:=	libft
 
 LIBFT		:=	libft.a
 
-SRC		:=	push_swap.c op_push.c op_rotate.c op_swap.c stack_handling.c \
+MAIN	:=	push_swap.c
+
+MAINB	:=	checker.c
+
+OBJM	:=	$(MAIN:.c=.o)
+
+OBJMB	:=	$(MAINB:.c=.o)
+
+MAIN	:=	$(addprefix $(SRCDIR)/, $(MAIN))
+
+MAINB	:=	$(addprefix $(SRCDIR)/, $(MAINB))
+
+OBJM	:=	$(addprefix $(OBJDIR)/, $(OBJM))
+
+OBJMB	:=	$(addprefix $(OBJDIR)/, $(OBJMB))
+
+SRC		:=	op_push.c op_rotate.c op_swap.c stack_handling.c \
 			stack_handling2.c stacks_handling.c ft_atol_forward.c \
-			translate_swap.c
+			translate_swap.c main_utils.c
 
 OBJ		:=	$(SRC:.c=.o)
 
@@ -54,23 +72,34 @@ $(OBJDIR)/%.o:		$(SRCDIR)/%.c | $(OBJDIR)
 
 $(LIBFTDIR)/$(LIBFT):
 			@echo $(GREEN)"Compiling libft"$(RESET)
-			@make -C $(LIBFTDIR)
+			@make -sC $(LIBFTDIR)
 
-$(NAME):		$(LIBFTDIR)/$(LIBFT) $(OBJ)
-			@echo $(GREEN)"Linking objects & creating program"$(RESET)
-			$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) -o $(NAME) -L$(LIBFTDIR) -lft
+$(NAME):		$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJM)
+			@echo $(GREEN)"MANDATORY PART: Linking objects & creating push_swap"
+			$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJM) -o $(NAME) -L$(LIBFTDIR) -lft
+			@echo $(RESET)
 
-bonus:			$(NAME)
+$(NAMEB):		$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJMB)
+			@echo $(GREEN)"BONUS PART: Linking objects & creating checker"
+			$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJMB) -o $(NAMEB) -L$(LIBFTDIR) -lft
+			@echo $(RESET)
+
+bonus:		$(NAMEB)
 
 clean:
 			@echo $(RED)"CLEANING OBJS"
 			@rm -f $(OBJ)
 			@rm -f $(OBJ:.o=.d)
+			@rm -f $(OBJM)
+			@rm -f $(OBJM:.o=.d)
+			@rm -f $(OBJMB)
+			@rm -f $(OBJMB:.o=.d)
 			@echo $(RESET)
 
 fclean:			clean
 			@echo $(RED)"CLEANING ALL"
 			@rm -f $(NAME)
+			@rm -f $(NAMEB)
 			@rm -f $(OBJDIR)/$(LIBFT)
 			@rm -f *.out
 			@rm -rf *.dSYM
@@ -79,8 +108,8 @@ fclean:			clean
 			@echo $(RESET)
 
 re:			fclean
-			make -s all
+			@make -s all
 
-.PHONY:			all clean fclean re
+.PHONY:			all clean fclean re bonus
 
--include		$(OBJ:.o=.d)
+-include		$(OBJ:.o=.d) $(OBJM:.o=.d) $(OBJMB:.o=.d)
