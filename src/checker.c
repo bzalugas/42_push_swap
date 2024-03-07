@@ -6,13 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:52:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 13:41:58 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:58:21 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/checker.h"
 
-int	get_operations(t_list **op)
+static int	get_operations(t_list **op)
 {
 	char	*line;
 	t_list	*new;
@@ -58,7 +58,7 @@ static int	do_fun(t_stacks *s, char *content)
 	return (1);
 }
 
-int	do_ops(t_stacks *s, t_list *op)
+static int	do_ops(t_stacks *s, t_list *op)
 {
 	while (op)
 	{
@@ -69,7 +69,7 @@ int	do_ops(t_stacks *s, t_list *op)
 	return (1);
 }
 
-int	result(t_stacks *s, t_list *op, char ok)
+static int	result(t_stacks *s, t_list *op, char ok)
 {
 	t_frame	*a;
 
