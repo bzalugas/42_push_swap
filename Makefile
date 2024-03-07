@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/03/07 13:37:07 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/03/07 13:44:31 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -40,9 +40,9 @@ OBJM	:=	$(addprefix $(OBJDIR)/, $(OBJM))
 
 OBJMB	:=	$(addprefix $(OBJDIR)/, $(OBJMB))
 
-SRC		:=	op_push.c op_rotate.c op_swap.c stack_handling.c \
+SRC		:=	op_push.c op_revrotate.c op_rotate.c op_swap.c stack_handling.c \
 			stack_handling2.c stacks_handling.c ft_atol_forward.c \
-			translate_swap.c main_utils.c
+			main_utils.c
 
 OBJ		:=	$(SRC:.c=.o)
 

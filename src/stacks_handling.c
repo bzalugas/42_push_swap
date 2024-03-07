@@ -6,13 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:05:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/28 14:14:10 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:55:09 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_stacks	stacks_new()
+t_stacks	stacks_new(void)
 {
 	t_stacks	stacks;
 
@@ -51,6 +51,6 @@ void	*stacks_clear(t_stacks *stacks)
 	}
 	free(stacks->a);
 	free(stacks->b);
-	*stacks = (t_stacks){0,0};
+	*stacks = (t_stacks){0, 0};
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:52:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 13:32:46 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:41:58 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	get_operations(t_list **op)
 	return (1);
 }
 
-static int do_fun(t_stacks *s, char *content)
+static int	do_fun(t_stacks *s, char *content)
 {
 	if (!ft_strncmp(content, "sa", 2))
 		sa(s);
