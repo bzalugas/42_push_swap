@@ -40,8 +40,17 @@ Ideas:
 - "cutting" at pivot & sorting stacks separately
 - naive approach: pushing numbers in ascending order to b then pushing all to a
 - "bubble-sort-like": push if 0 < 1 else swap then sort b
+- Sorting numbers by range of 3 => sorting in the smallest stack
+** CODING bonus
+:LOGBOOK:
+CLOCK: [2024-03-07 Thu 13:13]--[2024-03-07 Thu 13:40] =>  0:27
+CLOCK: [2024-03-07 Thu 12:38]--[2024-03-07 Thu 13:06] =>  0:28
+:END:
+
 ** IN PROGRESS think/test/etc
 :LOGBOOK:
+CLOCK: [2024-03-07 Thu 12:20]--[2024-03-07 Thu 12:38] =>  0:18
+CLOCK: [2024-03-07 Thu 12:00]--[2024-03-07 Thu 12:18] =>  0:18
 CLOCK: [2024-03-05 Tue 19:55]--[2024-03-05 Tue 20:29] =>  0:34
 CLOCK: [2024-03-05 Tue 19:49]--[2024-03-05 Tue 19:54] =>  0:05
 CLOCK: [2024-03-05 Tue 14:42]--[2024-03-05 Tue 15:17] =>  0:35
