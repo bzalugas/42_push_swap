@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 13:28:33 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 13:30:29 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:40:21 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	parse_push_swap(int ac, char *av[], t_stacks *s)
 
 	i = 1;
 	j = 0;
-	while (av[i] && av[i][j])
+	while (av[i] && av[i][j] && av[i][j + 1])
 	{
 		n = ft_atol_forward(&av[i][j], &tmp);
 		if (n > INT_MAX || n < INT_MIN || tmp == -1 || stack_get_n(s->a, n))
