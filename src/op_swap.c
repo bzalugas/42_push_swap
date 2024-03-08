@@ -6,13 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:03:53 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/28 14:29:11 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:09:53 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	swap(t_stack *s)
+void	swap(t_stack *s)
 {
 	t_frame	*tmp;
 

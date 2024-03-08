@@ -6,13 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:16:59 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 13:42:48 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:09:01 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	rotate(t_stack *s)
+void	rotate(t_stack *s)
 {
 	t_frame	*tmp;
 

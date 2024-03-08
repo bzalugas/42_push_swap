@@ -6,13 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 13:42:32 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 13:42:52 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:10:08 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	rrotate(t_stack *s)
+void	rrotate(t_stack *s)
 {
 	if (s->size < 2)
 		return ;

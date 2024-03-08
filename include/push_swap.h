@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/08 13:11:22 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:10:13 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int				stack_add_back(t_stack *stack, int n);
 t_frame			*stack_get_i(t_stack *stack, int i);
 void			stack_update_i(t_stack *stack);
 t_frame			*stack_get_n(t_stack *s, int n);
+int				stack_score(t_stack *s);
 
 t_stacks		stacks_new(void);
 int				stacks_add_a(t_stacks *stacks, int n);
@@ -49,6 +50,7 @@ void			*stacks_clear(t_stacks *stacks);
 
 /********************************* OPERATIONS *********************************/
 
+void			swap(t_stack *s);
 void			sa(t_stacks *stacks);
 void			sb(t_stacks *stacks);
 void			ss(t_stacks *stacks);
@@ -56,10 +58,12 @@ void			ss(t_stacks *stacks);
 void			pa(t_stacks *stacks);
 void			pb(t_stacks *stacks);
 
+void			rotate(t_stack *s);
 void			ra(t_stacks *s);
 void			rb(t_stacks *s);
 void			rr(t_stacks *s);
 
+void			rrotate(t_stack *s);
 void			rra(t_stacks *s);
 void			rrb(t_stacks *s);
 void			rrr(t_stacks *s);
