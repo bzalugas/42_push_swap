@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 15:57:59 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:11:22 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ void			rrr(t_stacks *s);
 unsigned int	ft_abs(int n);
 long			ft_atol_forward(const char *nptr, int *i);
 int				finish_error(t_stacks *s);
-int				parse(int ac, char *av[], t_stacks *s);
+int				parse_push_swap(int ac, char *av[], t_stacks *s);
 
 #endif

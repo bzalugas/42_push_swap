@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 14:00:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 16:05:33 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:15:44 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	main(int ac, char *av[])
 	if (ac < 2)
 		return (1);
 	s = stacks_new();
-	if (!parse(ac, av, &s))
+	if (!parse_push_swap(ac, av, &s))
 		return (finish_error(&s));
 	nb_op = get_do_ops(&s);
 	return (result(&s, nb_op, 1));

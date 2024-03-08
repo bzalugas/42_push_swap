@@ -19,7 +19,7 @@ int	finish_error(t_stacks *s)
 	return (1);
 }
 
-int	parse(int ac, char *av[], t_stacks *s)
+int	parse_push_swap(int ac, char *av[], t_stacks *s)
 {
 	int		i;
 	int		j;
