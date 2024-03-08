@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/03/08 12:45:12 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/03/08 13:26:29 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -118,6 +118,7 @@ fclean:			clean
 			@echo $(RED)"CLEANING ALL"
 			@rm -f $(NAME)
 			@rm -f $(NAMEB)
+			@rm -f $(NAMEBE)
 			@rm -f $(OBJDIR)/$(LIBFT)
 			@rm -f *.out
 			@rm -rf *.dSYM
