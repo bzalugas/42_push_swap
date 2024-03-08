@@ -2,6 +2,7 @@
 *.out
 *.o
 *~
-push_swap
 obj/
+push_swap
 checker_linux
+checker_enhanced
