@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:52:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 15:43:02 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/08 12:50:16 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int	main(int ac, char *av[])
 	t_stacks	s;
 	t_list		*op;
 
+	op = NULL;
 	if (ac < 2)
 		return (1);
 	s = stacks_new();
