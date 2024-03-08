@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/03/07 15:59:28 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/03/08 12:45:12 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -97,6 +97,9 @@ $(NAMEBE):		$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJBE)
 			$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJBE) -o $(NAMEBE) -L$(LIBFTDIR) -lft
 			@echo $(RESET)
 
+libft:
+			@make -sC $(LIBFTDIR)
+
 bonus:		$(NAMEB)
 
 bonus2:		$(NAMEBE)
@@ -125,6 +128,6 @@ fclean:			clean
 re:			fclean
 			@make -s all
 
-.PHONY:			all clean fclean re bonus
+.PHONY:			all clean fclean re bonus libft
 
 -include		$(OBJ:.o=.d) $(OBJM:.o=.d) $(OBJMB:.o=.d)
