@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:49:56 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 15:58:25 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:23:26 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	write_spaces(int len)
 	i = -1;
 	while (++i < len)
 		ft_putchar_fd('_', 1);
-	ft_putchar_fd(' ', 1);
+	ft_putstr_fd("   ", 1);
 	i = -1;
 	while (++i < len)
 		ft_putchar_fd('_', 1);
@@ -90,7 +90,7 @@ void	write_stacks(t_stacks *s, int len, int i)
 		}
 		if (b && s->b->size - i >= 0)
 		{
-			ft_printf(" %*d", len + ((s->a->size - i < 0) * len), b->n);
+			ft_printf("   %*d", len + ((s->a->size - i < 0) * len), b->n);
 			b = b->next;
 		}
 		write(1, "\n", 1);
