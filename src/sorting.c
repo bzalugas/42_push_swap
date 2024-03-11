@@ -6,28 +6,17 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/11 10:10:18 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:22:38 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	sort_three(t_stack *s)
+int sort_three(t_stack *s, t_list *cmd)
 {
-	t_frame	*max;
-	t_frame	*top;
-
 	if (s->size < 3)
-		return ;
-	max = s->top;
-	top = s->top->next;
-	while (top)
-	{
-		if (top->n > max->n)
-			max = top;
-		top = top->next;
-	}
-	if (s->top == max)
+		return (0);
+	if (s->top == stack_get_max(s)) //add the command to list
 		rotate(s);
 	if (s->top->next->n > s->bot->n)
 		rrotate(s);
@@ -39,7 +28,7 @@ void	sort_five(t_stack *s)
 {
 	t_frame	*f;
 
-	if (s->size < 4)
+	if (s->size < 4 || s->size > 5)
 		return ;
 	while (stack_score(s) < s->size)
 	{
@@ -48,7 +37,8 @@ void	sort_five(t_stack *s)
 		{
 			if (f->n > f->next->n) //+ use median ?
 			{
-
+				if (f == stack_get_max(s))
+					rotate(s);
 			}
 			f = f->next;
 		}

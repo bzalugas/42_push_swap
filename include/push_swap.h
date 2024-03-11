@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/11 10:45:27 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:15:44 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,24 @@ typedef struct s_stacks
 	t_stack	*b;
 }				t_stacks;
 
+typedef enum	e_op
+{
+	S,
+	R,
+	RRO,
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}			t_op;
+
 /***************************** STACKS HANDLING ********************************/
 
 t_frame			*frame_new(int n, int i, t_frame *prev, t_frame *next);
@@ -44,6 +62,7 @@ t_frame			*stack_get_i(t_stack *stack, int i);
 void			stack_update_i(t_stack *stack);
 t_frame			*stack_get_n(t_stack *s, int n);
 int				stack_score(t_stack *s);
+t_frame			*stack_get_max(t_stack *s);
 
 t_stacks		stacks_new(void);
 int				stacks_add_a(t_stacks *stacks, int n);
@@ -77,5 +96,6 @@ unsigned int	ft_abs(int n);
 long			ft_atol_forward(const char *nptr, int *i);
 int				finish_error(t_stacks *s);
 int				parse_push_swap(int ac, char *av[], t_stacks *s);
+int				ft_lstadd_back2(t_list **lst, t_list *new);
 
 #endif
