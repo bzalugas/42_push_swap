@@ -6,22 +6,38 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/11 13:22:38 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:03:25 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int sort_three(t_stack *s, t_list *cmd)
+t_op	*get_stack_cmds(t_stacks *s, t_stack *stack)
 {
+	static t_op	cmd_a[3] = {SA, RA, RRA};
+	static t_op	cmd_b[3] = {SB, RB, RRB};
+
+	if (stack == s->a)
+		return (cmd_a);
+	return (cmd_b);
+}
+
+t_list *sort_three(t_stacks *ss, t_stack *s)
+{
+	t_list	*tmp;
+	t_op	*cmds;
+
+	cmds = get_stack_cmds(ss, s);
+	tmp = ft_lstlast(ss->cmd);
 	if (s->size < 3)
-		return (0);
-	if (s->top == stack_get_max(s)) //add the command to list
+		return (NULL);
+	if (s->top == stack_get_max(s) && ft_lstadd_back2(&ss->cmd, (void *)cmds[2]))
 		rotate(s);
-	if (s->top->next->n > s->bot->n)
+	if (s->top->next->n > s->bot->n && ft_lstadd_back2(&ss->cmd, (void *)RRO))
 		rrotate(s);
-	if (s->top->n > s->top->next->n)
+	if (s->top->n > s->top->next->n && ft_lstadd_back2(&ss->cmd, (void *)S))
 		swap(s);
+	return (tmp->next);
 }
 
 void	sort_five(t_stack *s)

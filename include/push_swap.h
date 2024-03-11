@@ -6,13 +6,37 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/11 13:15:44 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:03:20 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
+
+typedef enum	e_op
+{
+	S,
+	R,
+	RRO,
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}			t_op;
+
+typedef struct s_cmds
+{
+	t_op			cmd;
+	struct s_cmds	*next;
+}				t_cmds;
 
 typedef struct s_frame
 {
@@ -33,25 +57,9 @@ typedef struct s_stacks
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		total;
+	t_cmds	*cmds;
 }				t_stacks;
-
-typedef enum	e_op
-{
-	S,
-	R,
-	RRO,
-	SA,
-	SB,
-	SS,
-	PA,
-	PB,
-	RA,
-	RB,
-	RR,
-	RRA,
-	RRB,
-	RRR
-}			t_op;
 
 /***************************** STACKS HANDLING ********************************/
 
@@ -96,6 +104,6 @@ unsigned int	ft_abs(int n);
 long			ft_atol_forward(const char *nptr, int *i);
 int				finish_error(t_stacks *s);
 int				parse_push_swap(int ac, char *av[], t_stacks *s);
-int				ft_lstadd_back2(t_list **lst, t_list *new);
+int				ft_lstadd_back2(t_list **lst, void *content);
 
 #endif

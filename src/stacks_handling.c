@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:05:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/11 09:40:01 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:51:38 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_stacks	stacks_new(void)
 
 	stacks.a = stack_new();
 	stacks.b = stack_new();
+	stacks.total = 0;
+	stacks.cmd = NULL;
 	return (stacks);
 }
 
@@ -51,6 +53,6 @@ void	*stacks_clear(t_stacks *stacks)
 	}
 	free(stacks->a);
 	free(stacks->b);
-	*stacks = (t_stacks){0, 0};
+	ft_lstclear(&stacks->cmd, NULL);
 	return (NULL);
 }
