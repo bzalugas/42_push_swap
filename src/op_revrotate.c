@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 13:42:32 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/08 18:10:08 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/11 10:55:29 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	rrotate(t_stack *s)
 		return ;
 	s->bot->next = s->top;
 	s->top = s->bot;
-	s->bot = stack_get_i(s, s->size - 2);
+	s->bot = s->bot->prev;
+	s->top->prev = NULL;
 	s->bot->next = NULL;
 	stack_update_i(s);
 }

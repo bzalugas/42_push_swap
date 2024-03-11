@@ -6,20 +6,20 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:31:34 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/07 13:55:59 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/11 10:20:50 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_frame	*frame_new(int n, int i, t_frame *next)
+t_frame	*frame_new(int n, int i, t_frame *prev, t_frame *next)
 {
 	t_frame	*new;
 
 	new = (t_frame *)ft_calloc(1, sizeof(t_frame));
 	if (!new)
 		return (NULL);
-	*new = (t_frame){n, i, next};
+	*new = (t_frame){n, i, prev, next};
 	return (new);
 }
 
@@ -37,7 +37,7 @@ int	stack_add_back(t_stack *stack, int n)
 	int		i;
 
 	i = stack->size;
-	new = frame_new(n, i, NULL);
+	new = frame_new(n, i, stack->bot, NULL);
 	stack->size++;
 	if (!stack->top)
 	{
@@ -52,12 +52,26 @@ int	stack_add_back(t_stack *stack, int n)
 
 t_frame	*stack_get_i(t_stack *stack, int i)
 {
-	t_frame	*top;
+	t_frame	*f;
+	bool	top;
 
-	top = stack->top;
-	while (top && top->i != i)
-		top = top->next;
-	return (top);
+	if (i >= stack->size || i < 0)
+		return (NULL);
+	top = true;
+	if (i > (stack->size + (stack->size % 2 != 0)) / 2)
+		top = false;
+	if (top)
+		f = stack->top;
+	else
+		f = stack->bot;
+	while (f && f->i != i)
+	{
+		if (top)
+			f = f->next;
+		else
+			f = f->prev;
+	}
+	return (f);
 }
 
 void	stack_update_i(t_stack *stack)

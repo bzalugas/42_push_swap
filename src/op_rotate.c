@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:16:59 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/08 18:09:01 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/11 10:53:49 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	rotate(t_stack *s)
 	if (s->size < 2)
 		return ;
 	tmp = s->top->next;
+	tmp->prev = NULL;
 	s->top->next = NULL;
+	s->top->prev = s->bot;
 	s->bot->next = s->top;
 	s->bot = s->top;
 	s->top = tmp;
