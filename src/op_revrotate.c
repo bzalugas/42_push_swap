@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 13:42:32 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/11 10:55:29 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:49:21 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,18 @@ void	rrotate(t_stack *s)
 void	rra(t_stacks *s)
 {
 	rrotate(s->a);
+	ft_cmdadd_back(&s->cmds, RRA);
 }
 
 void	rrb(t_stacks *s)
 {
 	rrotate(s->b);
+	ft_cmdadd_back(&s->cmds, RRB);
 }
 
 void	rrr(t_stacks *s)
 {
 	rra(s);
 	rrb(s);
+	ft_cmdadd_back(&s->cmds, RRR);
 }

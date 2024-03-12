@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:55:37 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/02/28 14:26:39 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:49:53 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ static void	push(t_stack *from, t_stack *to)
 	stack_update_i(to);
 }
 
-void	pa(t_stacks *stacks)
+void	pa(t_stacks *s)
 {
-	push(stacks->b, stacks->a);
+	push(s->b, s->a);
+	ft_cmdadd_back(&s->cmds, PA);
 }
 
-void	pb(t_stacks *stacks)
+void	pb(t_stacks *s)
 {
-	push(stacks->a, stacks->b);
+	push(s->a, s->b);
+	ft_cmdadd_back(&s->cmds, PB);
 }

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:03:53 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/11 10:51:56 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:51:27 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,21 @@ void	swap(t_stack *s)
 	s->top = tmp;
 }
 
-void	sa(t_stacks *stacks)
+void	sa(t_stacks *s)
 {
-	swap(stacks->a);
+	swap(s->a);
+	ft_cmdadd_back(&s->cmds, SA);
 }
 
-void	sb(t_stacks *stacks)
+void	sb(t_stacks *s)
 {
-	swap(stacks->b);
+	swap(s->b);
+	ft_cmdadd_back(&s->cmds, SB);
 }
 
-void	ss(t_stacks *stacks)
+void	ss(t_stacks *s)
 {
-	sa(stacks);
-	sb(stacks);
+	sa(s);
+	sb(s);
+	ft_cmdadd_back(&s->cmds, SS);
 }

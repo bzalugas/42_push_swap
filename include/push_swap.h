@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/12 13:44:06 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:50:08 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void			*stacks_clear(t_stacks *stacks);
 /********************************* OPERATIONS *********************************/
 
 void			swap(t_stack *s);
-void			sa(t_stacks *stacks);
-void			sb(t_stacks *stacks);
-void			ss(t_stacks *stacks);
+void			sa(t_stacks *s);
+void			sb(t_stacks *s);
+void			ss(t_stacks *s);
 
-void			pa(t_stacks *stacks);
-void			pb(t_stacks *stacks);
+void			pa(t_stacks *s);
+void			pb(t_stacks *s);
 
 void			rotate(t_stack *s);
 void			ra(t_stacks *s);
