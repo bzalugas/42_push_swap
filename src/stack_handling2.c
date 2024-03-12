@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:04:56 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/11 11:16:30 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:45:06 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,19 @@ t_frame	*stack_get_n(t_stack *s, int n)
 int	stack_score(t_stack *s)
 {
 	int		score;
+	t_frame	*max;
+	t_frame	*min;
 	t_frame	*top;
 
+	max = stack_get_max(s);
+	min = stack_get_min(s);
 	score = 0;
 	top = s->top;
 	while (top && top != s->bot)
 	{
 		if (!top->next || (top->next && (top->next->n > top->n)))
+			score++;
+		else if (top->next && top == max && top->next == min)
 			score++;
 		top = top->next;
 	}
@@ -52,4 +58,20 @@ t_frame	*stack_get_max(t_stack *s)
 		top = top->next;
 	}
 	return (max);
+}
+
+t_frame	*stack_get_min(t_stack *s)
+{
+	t_frame	*min;
+	t_frame	*top;
+
+	min = s->top;
+	top = s->top->next;
+	while (top)
+	{
+		if (top->n < min->n)
+			min = top;
+		top = top->next;
+	}
+	return (min);
 }
