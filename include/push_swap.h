@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/12 13:50:08 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:00:42 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_frame
 {
 	int				n;
 	int				i;
+	struct s_frame	*target;
 	struct s_frame	*prev;
 	struct s_frame	*next;
 }				t_frame;
@@ -101,5 +102,7 @@ int				finish_error(t_stacks *s);
 int				parse_push_swap(int ac, char *av[], t_stacks *s);
 int				ft_cmdadd_back(t_list **lst, t_op op);
 void			ft_cmdclear(t_list **lst, void (*del)(void *));
+int				ft_max_int(int a, int b);
+int				ft_min_int(int a, int b);
 
 #endif
