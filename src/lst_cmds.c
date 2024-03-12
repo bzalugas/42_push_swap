@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmds.c                                             :+:      :+:    :+:   */
+/*   lst_cmds.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:04:04 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/11 16:13:42 by bazaluga         ###   ########.fr       */
+/*   Created: 2024/03/12 14:02:52 by bazaluga          #+#    #+#             */
+/*   Updated: 2024/03/12 14:02:56 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_cmds	*cmds_new(t_op op)
-{
-	t_cmds	*new;
-
-	new = (t_cmds *)malloc(sizeof(t_cmds));
-	if (!new)
-		return (NULL);
-	*new = (t_cmds) {op, NULL};
-	return (new);
-}
-
-int	cmdsadd_back(t_cmds **lst, t_op op)
+int	ft_cmdadd_back(t_list **lst, t_op op)
 {
 	t_list	*tmp;
 	t_list	*new;
@@ -31,7 +20,7 @@ int	cmdsadd_back(t_cmds **lst, t_op op)
 	new = (t_list *)malloc(sizeof(t_list));
 	if (!new || !lst)
 		return (0);
-	*new = (t_list) {content, NULL};
+	*new = (t_list) {(void *)op, NULL};
 	if (!*lst)
 	{
 		*lst = new;
@@ -42,4 +31,21 @@ int	cmdsadd_back(t_cmds **lst, t_op op)
 		tmp = tmp->next;
 	tmp->next = new;
 	return (1);
+}
+
+void	ft_cmdclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*tmp;
+
+	if (!lst)
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		if (del)
+			del((*lst)->content);
+		free(*lst);
+		*lst = tmp;
+	}
+	*lst = NULL;
 }

@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/03/08 13:26:29 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/03/12 14:17:35 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -50,7 +50,7 @@ OBJBE	:=	$(addprefix $(OBJDIR)/, $(OBJBE))
 
 SRC		:=	op_push.c op_revrotate.c op_rotate.c op_swap.c stack_handling.c \
 			stack_handling2.c stacks_handling.c ft_atol_forward.c \
-			main_utils.c ft_abs.c
+			main_utils.c ft_abs.c lst_cmds.c
 
 OBJ		:=	$(SRC:.c=.o)
 
@@ -131,4 +131,4 @@ re:			fclean
 
 .PHONY:			all clean fclean re bonus libft
 
--include		$(OBJ:.o=.d) $(OBJM:.o=.d) $(OBJMB:.o=.d)
+-include		$(OBJ:.o=.d) $(OBJM:.o=.d) $(OBJMB:.o=.d) $(OBJBE:.o=.d)
