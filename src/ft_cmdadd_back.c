@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back2.c                                  :+:      :+:    :+:   */
+/*   ft_cmdadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 11:39:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/11 15:16:58 by bazaluga         ###   ########.fr       */
+/*   Created: 2024/03/12 13:46:54 by bazaluga          #+#    #+#             */
+/*   Updated: 2024/03/12 13:46:57 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	ft_lstadd_back2(t_list **lst, void *content)
+int	ft_cmdadd_back(t_list **lst, t_op op)
 {
 	t_list	*tmp;
 	t_list	*new;
@@ -20,7 +20,7 @@ int	ft_lstadd_back2(t_list **lst, void *content)
 	new = (t_list *)malloc(sizeof(t_list));
 	if (!new || !lst)
 		return (0);
-	*new = (t_list) {content, NULL};
+	*new = (t_list) {(void *)op, NULL};
 	if (!*lst)
 	{
 		*lst = new;
