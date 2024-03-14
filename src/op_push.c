@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:55:37 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/12 13:49:53 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/14 10:54:23 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@ static void	push(t_stack *from, t_stack *to)
 		return ;
 	tmp = from->top->next;
 	from->top->next = to->top;
+	if (to->top)
+		to->top->prev = from->top;
 	to->top = from->top;
 	to->size++;
 	from->top = tmp;
+	if (from->top)
+		from->top->prev = NULL;
 	from->size--;
 	if (from->size == 0)
 		from->bot = NULL;
