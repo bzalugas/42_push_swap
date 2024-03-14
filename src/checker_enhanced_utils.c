@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:49:56 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/13 13:54:06 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/14 10:48:06 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ void	write_stacks(t_stacks *s, int len, int i)
 	{
 		if (a && s->a->size - i >= 0)
 		{
-			ft_printf("% *d", len, a->n);
+			ft_printf("%*d", len, a->n);
 			a = a->next;
 		}
 		if (b && s->b->size - i >= 0)
 		{
-			ft_printf("% *d", 4 + len + ((s->a->size - i < 0) * len), b->n);
+			ft_printf("%*d", 4 + len + ((s->a->size - i < 0) * len), b->n);
 			b = b->next;
 		}
 		write(1, "\n", 1);
