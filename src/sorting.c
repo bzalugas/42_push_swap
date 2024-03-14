@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/12 15:01:09 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:10:41 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,27 @@ void sort_three(t_stacks *s)
 int	cost_push_b(t_stacks *s, t_frame *f, t_frame *t)
 {
 	int	cost;
-	int	med_a;
-	int	med_b;
+	int	mid_a;
+	int	mid_b;
+	int	cost_a;
+	int	cost_b;
 
-	med_a = s->a->size + (s->a->size % 2 != 0) / 2;
-	med_b = s->b->size + (s->b->size % 2 != 0) / 2;
-	if ((f->i <= med_a && t->i <= med_b) || (f->i > med_a && t->i > med_b))
-		cost = ft_max_int(f->i, t->i) - ft_min_int(f->i, t->i);
+	mid_a = s->a->size + (s->a->size % 2 != 0) / 2;
+	mid_b = s->b->size + (s->b->size % 2 != 0) / 2;
+	if (f->i <= mid_a)
+		cost_a = f->i;
 	else
-		cost = f->i + t->i;
-	return (cost + 1);
+		cost_a = s->a->size - f->i;
+	if (t->i <= mid_b)
+		cost_b = t->i;
+	else
+		cost_b = s->b->size - t->i;
+	if ((f->i <= mid_a && t->i <= mid_b) || (f->i > mid_a && t->i > mid_b))
+		cost = ft_max_int(cost_a, cost_b);
+	else
+		cost = ft_max_int(s->a->size - f->i, s->b->size - t->i);
+	cost = ft_min_int(cost_a + cost_b, cost);
+	return (cost);
 }
 
 void	push_non_sorted(t_stacks *s)
