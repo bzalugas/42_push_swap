@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/18 07:19:46 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:15:37 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void			rrr(t_stacks *s);
 /******************************** SORTING *************************************/
 
 void			get_b_target(t_stacks *s, t_frame *f);
+void			get_all_b_targets(t_stacks *s);
 int				cost_push_b(t_stacks *s, t_frame *f, t_frame *t);
 
 /********************************** UTILS *************************************/
@@ -107,8 +108,5 @@ int				ft_cmdadd_back(t_list **lst, t_op op);
 void			ft_cmdclear(t_list **lst, void (*del)(void *));
 int				ft_max_int(int a, int b);
 int				ft_min_int(int a, int b);
-
-
-void	test_cost_b(t_stacks *s);
 
 #endif
