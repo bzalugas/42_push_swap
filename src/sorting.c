@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/14 12:10:41 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/18 12:57:14 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ int	cost_push_b(t_stacks *s, t_frame *f, t_frame *t)
 	int	cost_a;
 	int	cost_b;
 
-	mid_a = s->a->size + (s->a->size % 2 != 0) / 2;
-	mid_b = s->b->size + (s->b->size % 2 != 0) / 2;
+	mid_a = ((s->a->size + (s->a->size % 2 != 0)) / 2) - 1;
+	mid_b = ((s->b->size + (s->b->size % 2 != 0)) / 2) - 1;
 	if (f->i <= mid_a)
 		cost_a = f->i;
 	else
 		cost_a = s->a->size - f->i;
+	if (!t)
+		return (cost_a + 1);
 	if (t->i <= mid_b)
 		cost_b = t->i;
 	else
@@ -50,26 +52,26 @@ int	cost_push_b(t_stacks *s, t_frame *f, t_frame *t)
 	else
 		cost = ft_max_int(s->a->size - f->i, s->b->size - t->i);
 	cost = ft_min_int(cost_a + cost_b, cost);
-	return (cost);
+	return (cost + 1);
 }
 
-void	push_non_sorted(t_stacks *s)
-{
-	t_frame	*cheapest;
-	int		min_cost;
+/* void	push_non_sorted(t_stacks *s) */
+/* { */
+/* 	t_frame	*cheapest; */
+/* 	int		min_cost; */
 
 
-}
+/* } */
 
-void	stacks_sort(t_stacks *s)
-{
-	if (stack_score(s->a) == s->a->size)
-		return ;
-	while (s->a->size > 3 && stack_score(s->a) < s->total)
-	{
+/* void	stacks_sort(t_stacks *s) */
+/* { */
+/* 	if (stack_score(s->a) == s->a->size) */
+/* 		return ; */
+/* 	while (s->a->size > 3 && stack_score(s->a) < s->total) */
+/* 	{ */
 
-	}
-}
+/* 	} */
+/* } */
 
 /*
 ** find 2 non sorted nbs. push the one that costs less to b.
