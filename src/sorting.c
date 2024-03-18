@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/18 12:57:14 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:26:23 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,11 @@ int	cost_push_b(t_stacks *s, t_frame *f, t_frame *t)
 /* { */
 /* 	t_frame	*cheapest; */
 /* 	int		min_cost; */
+/* 	int		cost; */
+/* 	int		i; */
 
-
+/* 	//get all targets in frames */
+/* 	//get min_cost */
 /* } */
 
 /* void	stacks_sort(t_stacks *s) */
