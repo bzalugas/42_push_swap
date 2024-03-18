@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:04:56 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/12 13:45:06 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/18 07:40:03 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ t_frame	*stack_get_min(t_stack *s)
 	t_frame	*min;
 	t_frame	*top;
 
+	if (s->size < 2)
+		return (s->top);
 	min = s->top;
 	top = s->top->next;
 	while (top)
