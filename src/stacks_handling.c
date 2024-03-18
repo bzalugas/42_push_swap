@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:05:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/12 15:19:45 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:00:52 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,10 @@ void	get_b_target(t_stacks *s, t_frame *f)
 	t_frame	*b;
 	t_frame	*max;
 
-	if (f->n < stack_get_min(s->b)->n)
+	f->target = stack_get_min(s->b);
+	if (!f->target)
+		return ;
+	if (f->n < f->target->n)
 	{
 		f->target = stack_get_max(s->b);
 		return ;
