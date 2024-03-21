@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 07:08:10 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/21 14:26:06 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:20:36 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,18 @@ void	test_get_b_target(t_stacks *s)
 		else
 			ft_printf("target of %d is %d\n", top->n, top->target->n);
 		top = top->next;
+	}
+}
+
+void	test_push_non_sorted(t_stacks *s)
+{
+	t_list	*op;
+
+	push_non_sorted(s);
+	op = s->cmds;
+	while (op)
+	{
+		ft_putendl_fd(op->content, 1);
+		op = op->next;
 	}
 }

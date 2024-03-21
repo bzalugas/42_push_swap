@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/21 13:55:15 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:22:29 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,26 @@ int	frame_sorted(t_stack *s, t_frame *f)
 	return (0);
 }
 
-/* void	push_to_b(t_stacks *s, t_frame *f) */
-/* { */
+void	push_to_b(t_stacks *s, t_frame *f)
+{
+	int	mid_a;
+	int	mid_b;
 
-/* } */
+	mid_a = ((s->a->size + (s->a->size % 2 != 0)) / 2) - 1;
+	mid_b = ((s->b->size + (s->b->size % 2 != 0)) / 2) - 1;
+	while (f->i <= mid_a)
+		ra(s);
+	while (f->i > 0)
+		rra(s);
+	if (f->target)
+	{
+		while (f->target->i <= mid_b)
+			rb(s);
+		while (f->target->i > 0)
+			rrb(s);
+	}
+	pb(s);
+}
 
 void	push_non_sorted(t_stacks *s)
 {
@@ -92,9 +108,15 @@ void	push_non_sorted(t_stacks *s)
 			get_b_target(s, top);
 			cost = cost_push(s, top);
 			if (min_cost == 0 || cost < min_cost)
+			{
 				min_cost = cost;
+				cheapest = top;
+			}
 		}
+		top = top->next;
 	}
+	if (cheapest)
+		push_to_b(s, cheapest);
 }
 
 /* void	push_non_sorted(t_stacks *s) */
