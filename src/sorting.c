@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/14 12:10:41 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/14 14:35:18 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void sort_three(t_stacks *s)
 		sa(s);
 }
 
-int	cost_push_b(t_stacks *s, t_frame *f, t_frame *t)
+int	cost_push(t_stacks *s, t_frame *f)
 {
 	int	cost;
 	int	mid_a;
@@ -41,24 +41,58 @@ int	cost_push_b(t_stacks *s, t_frame *f, t_frame *t)
 		cost_a = f->i;
 	else
 		cost_a = s->a->size - f->i;
-	if (t->i <= mid_b)
-		cost_b = t->i;
+	if (f->target->i <= mid_b)
+		cost_b = f->target->i;
 	else
-		cost_b = s->b->size - t->i;
-	if ((f->i <= mid_a && t->i <= mid_b) || (f->i > mid_a && t->i > mid_b))
+		cost_b = s->b->size - f->target->i;
+	if ((f->i <= mid_a && f->target->i <= mid_b)
+		|| (f->i > mid_a && f->target->i > mid_b))
 		cost = ft_max_int(cost_a, cost_b);
 	else
-		cost = ft_max_int(s->a->size - f->i, s->b->size - t->i);
+		cost = ft_max_int(s->a->size - f->i, s->b->size - f->target->i);
 	cost = ft_min_int(cost_a + cost_b, cost);
 	return (cost);
+}
+
+int	frame_sorted(t_stack *s, t_frame *f)
+{
+	if (!f)
+		return (0);
+	if (f && !f->next)
+		return (1);
+	if (f->n < f->next->n)
+		return (1);
+	if (f->n > f->next->n && f == stack_get_max(s)
+		&& f->next == stack_get_min(s))
+		return (2);
+	return (0);
+}
+
+void	push_to_b(t_stacks *s, t_frame *f)
+{
+
 }
 
 void	push_non_sorted(t_stacks *s)
 {
 	t_frame	*cheapest;
+	int		cost;
 	int		min_cost;
+	t_frame	*top;
 
-
+	min_cost = 0;
+	cheapest = NULL;
+	top = s->a->top;
+	while (top && top->next)
+	{
+		if (!frame_sorted(s->a, top))
+		{
+			get_b_target(s, top);
+			cost = cost_push(s, top);
+			if (min_cost == 0 || cost < min_cost)
+				min_cost = cost;
+		}
+	}
 }
 
 void	stacks_sort(t_stacks *s)

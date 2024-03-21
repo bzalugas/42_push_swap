@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/12 15:00:42 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/14 14:27:56 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ t_frame			*stack_get_min(t_stack *s);
 t_stacks		stacks_new(void);
 int				stacks_add_a(t_stacks *stacks, int n);
 void			*stacks_clear(t_stacks *stacks);
+void			get_a_target(t_stacks *s, t_frame *f);
+void			get_b_target(t_stacks *s, t_frame *f);
 
 /********************************* OPERATIONS *********************************/
 
