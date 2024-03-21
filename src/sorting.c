@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/21 13:47:41 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:55:15 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ int	frame_sorted(t_stack *s, t_frame *f)
 	return (0);
 }
 
-void	push_to_b(t_stacks *s, t_frame *f)
-{
+/* void	push_to_b(t_stacks *s, t_frame *f) */
+/* { */
 
-}
+/* } */
 
 void	push_non_sorted(t_stacks *s)
 {

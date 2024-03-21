@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 07:08:10 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/21 13:49:17 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:26:06 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	test_get_b_target(t_stacks *s)
 			ft_printf("target of %d is %d\n", top->n, top->target->n);
 		top = top->next;
 	}
-	i = (s->a->size / 2) + 1;
+	i = ((s->a->size + (s->a->size % 2 != 0))/ 2) + 1;
 	while (--i > 0)
 		pb(s);
 	ft_putendl_fd("\n\n", 1);
@@ -92,6 +92,21 @@ void	test_get_b_target(t_stacks *s)
 		top = top->next;
 	}
 	pb(s);
+	ft_putendl_fd("\n\n", 1);
+	top = s->a->top;
+	while (top)
+	{
+		get_b_target(s, top);
+		if (!top->target)
+			ft_printf("No target for %d\n", top->n);
+		else
+			ft_printf("target of %d is %d\n", top->n, top->target->n);
+		top = top->next;
+	}
+	rb(s);
+	i = s->b->size - 1;
+	while (--i > 0)
+		pa(s);
 	ft_putendl_fd("\n\n", 1);
 	top = s->a->top;
 	while (top)
