@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/21 15:22:29 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:29:39 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,15 @@ int	frame_sorted(t_stack *s, t_frame *f)
 {
 	if (!f)
 		return (0);
-	if (f && !f->next)
+	if (!f->next && !f->prev)
 		return (1);
-	if (f->n < f->next->n)
+	if (!f->next && f->prev && f->prev->n < f->n)
 		return (1);
-	if (f->n > f->next->n && f == stack_get_max(s)
+	if (f->next && !f->prev && f->n < f->next->n)
+		return (1);
+	if (f->next && f->prev && f->n < f->next->n && f->n > f->prev->n)
+		return (1);
+	if (f->next && f->n > f->next->n && f == stack_get_max(s)
 		&& f->next == stack_get_min(s))
 		return (2);
 	return (0);
@@ -77,13 +81,13 @@ void	push_to_b(t_stacks *s, t_frame *f)
 
 	mid_a = ((s->a->size + (s->a->size % 2 != 0)) / 2) - 1;
 	mid_b = ((s->b->size + (s->b->size % 2 != 0)) / 2) - 1;
-	while (f->i <= mid_a)
+	while (f->i <= mid_a && f->i > 0)
 		ra(s);
 	while (f->i > 0)
 		rra(s);
 	if (f->target)
 	{
-		while (f->target->i <= mid_b)
+		while (f->target->i <= mid_b && f->target->i > 0)
 			rb(s);
 		while (f->target->i > 0)
 			rrb(s);
@@ -101,7 +105,7 @@ void	push_non_sorted(t_stacks *s)
 	min_cost = 0;
 	cheapest = NULL;
 	top = s->a->top;
-	while (top && top->next)
+	while (top)
 	{
 		if (!frame_sorted(s->a, top))
 		{

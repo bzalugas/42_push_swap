@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/21 15:29:59 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:05:06 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,30 @@ static char	*op_to_text(void *content)
 {
 	t_op	op;
 
-	op = (t_op)content;
-	if (content == SA)
+	op = (unsigned long)content;
+	if (op == SA)
 		return ("sa");
-	if (content == SB)
+	if (op == SB)
 		return ("sb");
-	if (content == SS)
+	if (op == SS)
 		return ("ss");
-	if (content == PA)
+	if (op == PA)
 		return ("pa");
-	if (content == PB)
+	if (op == PB)
 		return ("pb");
-	if (content == RA)
+	if (op == RA)
 		return ("ra");
-	if (content == RB)
+	if (op == RB)
 		return ("rb");
-	if (content == RR)
+	if (op == RR)
 		return ("rr");
-	if (content == RRA)
+	if (op == RRA)
 		return ("rra");
-	if (content == RRB)
+	if (op == RRB)
 		return ("rrb");
-	if (content == RRR)
+	if (op == RRR)
 		return ("rrr");
+	return (NULL);
 }
 
 static void	display_cmds(t_stacks *s)
@@ -50,7 +51,11 @@ static void	display_cmds(t_stacks *s)
 	t_list	*cmd;
 
 	cmd = s->cmds;
-	ft_putendl_fd(op_to_text(cmd->content), 1);
+	while (cmd)
+	{
+		ft_putendl_fd(op_to_text(cmd->content), 1);
+		cmd = cmd->next;
+	}
 }
 
 int	main(int ac, char *av[])
@@ -63,6 +68,7 @@ int	main(int ac, char *av[])
 	if (!parse_push_swap(ac, av, &s))
 		return (finish_error(&s));
 	test_push_non_sorted(&s);
+	display_cmds(&s);
 	//optimize commands
 	//display commands
 	stacks_clear(&s);

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 07:08:10 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/21 15:20:36 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:30:54 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,13 +122,14 @@ void	test_get_b_target(t_stacks *s)
 
 void	test_push_non_sorted(t_stacks *s)
 {
-	t_list	*op;
+	int score;
 
-	push_non_sorted(s);
-	op = s->cmds;
-	while (op)
+	score = stack_score(s->a);
+	while (score != s->a->size)
 	{
-		ft_putendl_fd(op->content, 1);
-		op = op->next;
+		ft_printf("size a = %d, score = %d\n", s->a->size, score);
+		push_non_sorted(s);
+		score = stack_score(s->a);
 	}
+
 }
