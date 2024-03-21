@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/14 14:35:18 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:47:41 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ int	cost_push(t_stacks *s, t_frame *f)
 	int	cost_a;
 	int	cost_b;
 
-	mid_a = s->a->size + (s->a->size % 2 != 0) / 2;
-	mid_b = s->b->size + (s->b->size % 2 != 0) / 2;
+	mid_a = ((s->a->size + (s->a->size % 2 != 0)) / 2) - 1;
+	mid_b = ((s->b->size + (s->b->size % 2 != 0)) / 2) - 1;
 	if (f->i <= mid_a)
 		cost_a = f->i;
 	else
 		cost_a = s->a->size - f->i;
+	if (!f->target)
+		return (cost_a + 1);
 	if (f->target->i <= mid_b)
 		cost_b = f->target->i;
 	else
@@ -51,7 +53,7 @@ int	cost_push(t_stacks *s, t_frame *f)
 	else
 		cost = ft_max_int(s->a->size - f->i, s->b->size - f->target->i);
 	cost = ft_min_int(cost_a + cost_b, cost);
-	return (cost);
+	return (cost + 1);
 }
 
 int	frame_sorted(t_stack *s, t_frame *f)
@@ -95,15 +97,26 @@ void	push_non_sorted(t_stacks *s)
 	}
 }
 
-void	stacks_sort(t_stacks *s)
-{
-	if (stack_score(s->a) == s->a->size)
-		return ;
-	while (s->a->size > 3 && stack_score(s->a) < s->total)
-	{
+/* void	push_non_sorted(t_stacks *s) */
+/* { */
+/* 	t_frame	*cheapest; */
+/* 	int		min_cost; */
+/* 	int		cost; */
+/* 	int		i; */
 
-	}
-}
+/* 	//get all targets in frames */
+/* 	//get min_cost */
+/* } */
+
+/* void	stacks_sort(t_stacks *s) */
+/* { */
+/* 	if (stack_score(s->a) == s->a->size) */
+/* 		return ; */
+/* 	while (s->a->size > 3 && stack_score(s->a) < s->total) */
+/* 	{ */
+
+/* 	} */
+/* } */
 
 /*
 ** find 2 non sorted nbs. push the one that costs less to b.

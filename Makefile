@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/03/12 15:20:33 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/03/18 13:17:05 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -50,7 +50,8 @@ OBJBE	:=	$(addprefix $(OBJDIR)/, $(OBJBE))
 
 SRC		:=	op_push.c op_revrotate.c op_rotate.c op_swap.c stack_handling.c \
 			stack_handling2.c stacks_handling.c ft_atol_forward.c \
-			main_utils.c ft_abs.c lst_cmds.c ft_min_int.c ft_max_int.c
+			main_utils.c ft_abs.c lst_cmds.c ft_min_int.c ft_max_int.c sorting.c \
+			target_handling.c tests.c
 
 OBJ		:=	$(SRC:.c=.o)
 
@@ -112,6 +113,8 @@ clean:
 			@rm -f $(OBJM:.o=.d)
 			@rm -f $(OBJMB)
 			@rm -f $(OBJMB:.o=.d)
+			@rm -f $(OBJBE)
+			@rm -f $(OBJBE:.o=.d)
 			@echo $(RESET)
 
 fclean:			clean
@@ -119,7 +122,6 @@ fclean:			clean
 			@rm -f $(NAME)
 			@rm -f $(NAMEB)
 			@rm -f $(NAMEBE)
-			@rm -f $(OBJDIR)/$(LIBFT)
 			@rm -f *.out
 			@rm -rf *.dSYM
 			@echo "\nCLEANING LIBFT\n"
@@ -127,7 +129,7 @@ fclean:			clean
 			@echo $(RESET)
 
 re:			fclean
-			@make -s all
+			@make all
 
 .PHONY:			all clean fclean re bonus libft
 
