@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/22 15:47:10 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:49:07 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,57 +46,81 @@ static char	*op_to_text(void *content)
 	return (NULL);
 }
 
-static void	display_cmds(t_stacks *s)
+void	display_cmds(t_list *cmds)
+{
+	while (cmds)
+	{
+		ft_putendl_fd(op_to_text(cmds->content), 1);
+		cmds = cmds->next;
+	}
+}
+
+static void	optimize_rotate(t_list *cmds)
 {
 	t_list	*cmd;
+	t_list	*last;
 
-	cmd = s->cmds;
+	last = NULL;
+	cmd = cmds;
 	while (cmd)
 	{
-		ft_putendl_fd(op_to_text(cmd->content), 1);
+		if (last && (cmd->content == (void*)PB || cmd->content == (void*)PA))
+		{
+			cmd = last->next;
+			last = NULL;
+		}
+		if (cmd->content == (void*)RA || cmd->content == (void*)RB)
+		{
+			if (!last)
+				last = cmd;
+			else if (last && cmd->content != last->content)
+			{
+				last->content = (void*)RR;
+				ft_lstremove(&cmds, cmd, NULL);
+				cmd = last;
+				last = NULL;
+			}
+		}
 		cmd = cmd->next;
 	}
 }
 
-static void	optimize_cmds(t_stacks *s)
+static void	optimize_rrotate(t_list *cmds)
 {
 	t_list	*cmd;
-	t_list	*last_rotate;
-	t_list	*last_rrotate;
+	t_list	*last;
 
-	last_rotate = NULL;
-	last_rrotate = NULL;
-	cmd = s->cmds;
+	last = NULL;
+	cmd = cmds;
 	while (cmd)
 	{
-		if (cmd->content == (void*)RA || cmd->content == (void*)RB)
+		if (last && (cmd->content == (void*)PB || cmd->content == (void*)PA))
 		{
-			if (!last_rotate)
-				last_rotate = cmd;
-			else if (last_rotate && cmd->content != last_rotate->content)
-			{
-				last_rotate->content = (void*)RR;
-				ft_lstremove(&s->cmds, cmd, NULL);
-				cmd = last_rotate;
-				last_rotate = NULL;
-			}
+			cmd = last->next;
+			last = NULL;
 		}
 		if (cmd->content == (void*)RRA || cmd->content == (void*)RRB)
 		{
-			if (!last_rrotate)
-				last_rotate = cmd;
-			else if (last_rrotate && cmd->content != last_rrotate->content)
+			if (!last)
+				last = cmd;
+			else if (last && cmd->content != last->content)
 			{
-				last_rrotate->content = (void*)RR;
-				ft_lstremove(&s->cmds, cmd, NULL);
-				cmd = last_rrotate;
-				last_rrotate = NULL;
+				last->content = (void*)RRR;
+				ft_lstremove(&cmds, cmd, NULL);
+				cmd = last;
+				last = NULL;
 			}
 		}
 		cmd = cmd->next;
 	}
 }
 
+void	optimize_cmds(t_list *cmds)
+{
+	optimize_rotate(cmds);
+	optimize_rrotate(cmds);
+}
+void	test_optimize();
 int	main(int ac, char *av[])
 {
 	t_stacks	s;
@@ -107,10 +131,9 @@ int	main(int ac, char *av[])
 	if (!parse_push_swap(ac, av, &s))
 		return (finish_error(&s));
 	sort(&s);
-	optimize_cmds(&s);
-	display_cmds(&s);
-	//optimize commands
-	//display commands
+	optimize_cmds(s.cmds);
+	display_cmds(s.cmds);
+	/* test_optimize(); */
 	stacks_clear(&s);
 	return (0);
 }
