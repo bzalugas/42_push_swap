@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/22 12:51:43 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:47:09 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,11 @@ void	sort(t_stacks *s)
 	int score;
 
 	score = stack_score(s->a);
-	while (score != s->total - 1)
+	while (score != s->total)
 	{
-		ft_printf("score = %d, size = %d\n", score, s->total);
 		if (s->a->size == 3)
 			sort_three(s); // maybe not needed
-		if (stack_score(s->a) == s->a->size - 1)
+		if (stack_score(s->a) == s->a->size)
 			get_back_b(s);
 		else
 			push_non_sorted(s);

@@ -9,6 +9,7 @@ DEADLINE: <2024-03-15 Fri>
 :Effort:   70:00
 :END:
 :LOGBOOK:
+CLOCK: [2024-03-22 Fri 14:30]--[2024-03-22 Fri 14:54] =>  0:24
 CLOCK: [2024-03-22 Fri 11:53]--[2024-03-22 Fri 13:08] =>  1:15
 CLOCK: [2024-03-21 Thu 17:59]--[2024-03-21 Thu 18:59] =>  1:00
 CLOCK: [2024-03-21 Thu 14:42]--[2024-03-21 Thu 15:30] =>  0:48
@@ -54,7 +55,7 @@ Ideas:
 - Sorting numbers by range of 3 => sorting in the smallest stack
 
 Optimization: keep track of all commands & optimize at the end
-** CODING bonus
+** CODED bonus
 :LOGBOOK:
 CLOCK: [2024-03-08 Fri 12:20]--[2024-03-08 Fri 14:59] =>  2:39
 CLOCK: [2024-03-07 Thu 14:48]--[2024-03-07 Thu 16:03] =>  1:15

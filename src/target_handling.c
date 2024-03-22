@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:16:50 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/21 14:24:57 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:45:18 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	get_a_target(t_stacks *s, t_frame *f)
 	a = s->a->top;
 	while (a)
 	{
-		if (a->n < f->n && a->n > f->target->n)
+		if (a->n > f->n && a->n < f->target->n)
 			f->target = a;
 		a = a->next;
 	}

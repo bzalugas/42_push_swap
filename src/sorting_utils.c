@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:59:29 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/22 13:00:05 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:47:37 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,7 @@ void	push_to(t_stacks *s, t_frame *f, bool to_a)
 		while (target->i <= mid_b && target->i > 0)
 			rb(s);
 		while (target->i > 0)
-		{
-			write(1, "here\n", 5);
 			rrb(s);
-		}
 	}
 	if (to_a)
 		pa(s);
