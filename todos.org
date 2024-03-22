@@ -9,6 +9,7 @@ DEADLINE: <2024-03-15 Fri>
 :Effort:   70:00
 :END:
 :LOGBOOK:
+CLOCK: [2024-03-22 Fri 11:53]--[2024-03-22 Fri 13:08] =>  1:15
 CLOCK: [2024-03-21 Thu 17:59]--[2024-03-21 Thu 18:59] =>  1:00
 CLOCK: [2024-03-21 Thu 14:42]--[2024-03-21 Thu 15:30] =>  0:48
 CLOCK: [2024-03-21 Thu 13:54]--[2024-03-21 Thu 14:30] =>  0:36
@@ -40,6 +41,7 @@ CLOCK: [2024-02-26 Mon 12:56]--[2024-02-26 Mon 13:17] =>  0:21
 CLOCK: [2024-02-26 Mon 12:00]--[2024-02-26 Mon 12:55] =>  0:55
 :END:
 *** NOTES
+==> stack_score chelou
 possible cases:
 - few numbers in stack : 3 - ?
 - already sorted stack -> nothing

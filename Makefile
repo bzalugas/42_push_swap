@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/03/18 13:17:05 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/03/22 12:00:32 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -51,7 +51,7 @@ OBJBE	:=	$(addprefix $(OBJDIR)/, $(OBJBE))
 SRC		:=	op_push.c op_revrotate.c op_rotate.c op_swap.c stack_handling.c \
 			stack_handling2.c stacks_handling.c ft_atol_forward.c \
 			main_utils.c ft_abs.c lst_cmds.c ft_min_int.c ft_max_int.c sorting.c \
-			target_handling.c tests.c
+			target_handling.c sorting_utils.c tests.c
 
 OBJ		:=	$(SRC:.c=.o)
 
