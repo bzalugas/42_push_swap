@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 16:53:07 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:03:03 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	order_stack(t_stacks *s)
 
 void	sort(t_stacks *s)
 {
+	stacks_get_median(s);
 	while (stack_score(s->a) != s->total)
 	{
 		if (s->a->size == 3)

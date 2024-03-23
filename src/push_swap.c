@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 18:01:11 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:01:53 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	main(int ac, char *av[])
 	s = stacks_new();
 	if (!parse_push_swap(ac, av, &s))
 		return (finish_error(&s));
-	/* test_sorted(&s); */
+	/* test_get_median(&s); */
 	sort(&s);
 	optimize_cmds(s.cmds);
 	display_cmds(s.cmds);

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 07:08:10 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 18:19:33 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 18:51:50 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,31 +187,37 @@ void	test_real_target(t_stacks *s)
 	}
 }
 
-void	test_sorted(t_stacks *s)
-{
-	t_frame	*top;
-	bool	is_sorted;
+/* void	test_sorted(t_stacks *s) */
+/* { */
+/* 	t_frame	*top; */
+/* 	bool	is_sorted; */
 
-	top = s->a->top;
-	while (top)
-	{
-		get_real_target(s, top);
-		is_sorted = sorted(s, s->a, top);
-		ft_printf("%d is %s\n", top->n, is_sorted ? "sorted." : "not sorted.");
-		top = top->next;
-	}
-	pb(s);
-	pb(s);
-	pb(s);
-	rra(s);
-	rra(s);
-	display_cmds(s->cmds);
-	top = s->a->top;
-	while (top)
-	{
-		get_real_target(s, top);
-		is_sorted = sorted(s, s->a, top);
-		ft_printf("%d is %s\n", top->n, is_sorted ? "sorted." : "not sorted.");
-		top = top->next;
-	}
+/* 	top = s->a->top; */
+/* 	while (top) */
+/* 	{ */
+/* 		get_real_target(s, top); */
+/* 		is_sorted = sorted(s, s->a, top); */
+/* 		ft_printf("%d is %s\n", top->n, is_sorted ? "sorted." : "not sorted."); */
+/* 		top = top->next; */
+/* 	} */
+/* 	pb(s); */
+/* 	pb(s); */
+/* 	pb(s); */
+/* 	rra(s); */
+/* 	rra(s); */
+/* 	display_cmds(s->cmds); */
+/* 	top = s->a->top; */
+/* 	while (top) */
+/* 	{ */
+/* 		get_real_target(s, top); */
+/* 		is_sorted = sorted(s, s->a, top); */
+/* 		ft_printf("%d is %s\n", top->n, is_sorted ? "sorted." : "not sorted."); */
+/* 		top = top->next; */
+/* 	} */
+/* } */
+
+void	test_get_median(t_stacks *s)
+{
+	stacks_get_median(s);
+	ft_printf("median is %d\n", s->med);
 }

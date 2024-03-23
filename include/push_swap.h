@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 18:18:12 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 18:51:14 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_stacks
 	t_stack	*a;
 	t_stack	*b;
 	int		total;
+	int		med;
 	t_list	*cmds;
 }				t_stacks;
 
@@ -71,6 +72,7 @@ t_frame			*stack_get_min(t_stack *s);
 t_stacks		stacks_new(void);
 int				stacks_add_a(t_stacks *stacks, int n);
 void			*stacks_clear(t_stacks *stacks);
+void			stacks_get_median(t_stacks *s);
 
 /********************************* OPERATIONS *********************************/
 
@@ -126,6 +128,6 @@ void	test_push_non_sorted(t_stacks *s);//remove
 void	test_optimize(void);//remove
 void	test_real_target(t_stacks *s);//remove
 void	test_sorted(t_stacks *s);//remove
-
+void	test_get_median(t_stacks *s);//remove
 
 #endif

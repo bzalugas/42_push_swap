@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:05:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/18 13:12:59 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 18:50:06 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_stacks	stacks_new(void)
 	stacks.a = stack_new();
 	stacks.b = stack_new();
 	stacks.total = 0;
+	stacks.med = 0;
 	stacks.cmds = NULL;
 	return (stacks);
 }
@@ -58,4 +59,20 @@ void	*stacks_clear(t_stacks *stacks)
 	free(stacks->b);
 	ft_cmdclear(&stacks->cmds, NULL);
 	return (NULL);
+}
+
+void	stacks_get_median(t_stacks *s)
+{
+	t_frame	*last;
+	int		mid_a;
+
+	mid_a = ((s->a->size + (s->a->size % 2 != 0)) / 2) - 1;
+	last = stack_get_min(s->a);
+	while (mid_a > 0)
+	{
+		get_real_target(s, last);
+		last = last->target;
+		mid_a--;
+	}
+	s->med = last->n;
 }
