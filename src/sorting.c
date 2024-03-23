@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/22 14:47:09 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:13:36 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,15 @@ void	order_stack(t_stacks *s)
 
 void	sort(t_stacks *s)
 {
-	int score;
-
-	score = stack_score(s->a);
-	while (score != s->total)
+	while (stack_score(s->a) != s->total)
 	{
 		if (s->a->size == 3)
-			sort_three(s); // maybe not needed
-		if (stack_score(s->a) == s->a->size)
+		{
+			sort_three(s);
 			get_back_b(s);
+		}
 		else
 			push_non_sorted(s);
-		score = stack_score(s->a);
 	}
 	order_stack(s);
 }

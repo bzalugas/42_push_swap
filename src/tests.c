@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 07:08:10 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 14:56:03 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 15:30:53 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,34 +133,34 @@ void	test_push_non_sorted(t_stacks *s)
 
 }
 
-void	optimize_cmds(t_list *cmds);
-void	display_cmds(t_list *cmds);
-void	test_optimize()
-{
-	t_list	*cmds;
+/* void	optimize_cmds(t_list *cmds); */
+/* void	display_cmds(t_list *cmds); */
+/* void	test_optimize() */
+/* { */
+/* 	t_list	*cmds; */
 
-	cmds = NULL;
-	ft_cmdadd_back(&cmds, PB);
-	ft_cmdadd_back(&cmds, PB);
-	ft_cmdadd_back(&cmds, RA);
-	ft_cmdadd_back(&cmds, RA);
-	ft_cmdadd_back(&cmds, RB);
-	ft_cmdadd_back(&cmds, RB);
-	ft_cmdadd_back(&cmds, PB);
-	ft_cmdadd_back(&cmds, PB);
-	ft_cmdadd_back(&cmds, RA);
-	ft_cmdadd_back(&cmds, RA);
-	ft_cmdadd_back(&cmds, PB);
-	ft_cmdadd_back(&cmds, RB);
-	ft_cmdadd_back(&cmds, RB);
-	ft_cmdadd_back(&cmds, PA);
-	ft_cmdadd_back(&cmds, RA);
-	ft_cmdadd_back(&cmds, RB);
-	ft_cmdadd_back(&cmds, RA);
-	ft_cmdadd_back(&cmds, SA);
-	ft_cmdadd_back(&cmds, RB);
-	display_cmds(cmds);
-	ft_putendl_fd("\n", 1);
-	optimize_cmds(cmds);
-	display_cmds(cmds);
-}
+/* 	cmds = NULL; */
+/* 	ft_cmdadd_back(&cmds, PB); */
+/* 	ft_cmdadd_back(&cmds, PB); */
+/* 	ft_cmdadd_back(&cmds, RA); */
+/* 	ft_cmdadd_back(&cmds, RA); */
+/* 	ft_cmdadd_back(&cmds, RB); */
+/* 	ft_cmdadd_back(&cmds, RB); */
+/* 	ft_cmdadd_back(&cmds, PB); */
+/* 	ft_cmdadd_back(&cmds, PB); */
+/* 	ft_cmdadd_back(&cmds, RA); */
+/* 	ft_cmdadd_back(&cmds, RA); */
+/* 	ft_cmdadd_back(&cmds, PB); */
+/* 	ft_cmdadd_back(&cmds, RB); */
+/* 	ft_cmdadd_back(&cmds, RB); */
+/* 	ft_cmdadd_back(&cmds, PA); */
+/* 	ft_cmdadd_back(&cmds, RA); */
+/* 	ft_cmdadd_back(&cmds, RB); */
+/* 	ft_cmdadd_back(&cmds, RA); */
+/* 	ft_cmdadd_back(&cmds, SA); */
+/* 	ft_cmdadd_back(&cmds, RB); */
+/* 	display_cmds(cmds); */
+/* 	ft_putendl_fd("\n", 1); */
+/* 	optimize_cmds(cmds); */
+/* 	display_cmds(cmds); */
+/* } */

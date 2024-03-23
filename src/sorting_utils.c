@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:59:29 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 15:25:51 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 15:27:45 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,6 @@ int	cost_push(t_stack *from, t_stack *to, t_frame *f)
 		cost = ft_max_int(from->size - f->i, to->size - f->target->i);
 	cost = ft_min_int(cost_f + cost_t, cost);
 	return (cost + 1);
-}
-
-int	frame_sorted(t_stack *s, t_frame *f)
-{
-	if (!f)
-		return (0);
-	if (!f->next && !f->prev)
-		return (1);
-	if (!f->next && f->prev && f->prev->n < f->n)
-		return (1);
-	if (f->next && !f->prev && f->n < f->next->n)
-		return (1);
-	if (f->next && f->prev && f->n < f->next->n && f->n > f->prev->n)
-		return (1);
-	if (f->next && f->n > f->next->n && f == stack_get_max(s)
-		&& f->next == stack_get_min(s))
-		return (2);
-	return (0);
 }
 
 void	push_to(t_stacks *s, t_frame *f, bool to_a)
@@ -102,16 +84,13 @@ void	push_non_sorted(t_stacks *s)
 	top = s->a->top;
 	while (top && s->a->size > 3)
 	{
-		/* if (!frame_sorted(s->a, top)) */
-		/* { */
-			get_b_target(s, top);
-			cost = cost_push(s->a, s->b, top);
-			if (min_cost == 0 || cost < min_cost)
-			{
-				min_cost = cost;
-				cheapest = top;
-			}
-		/* } */
+		get_b_target(s, top);
+		cost = cost_push(s->a, s->b, top);
+		if (min_cost == 0 || cost < min_cost)
+		{
+			min_cost = cost;
+			cheapest = top;
+		}
 		top = top->next;
 	}
 	if (cheapest)
