@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:02:52 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/12 14:02:56 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:28:58 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_cmdadd_back(t_list **lst, t_op op)
 	new = (t_list *)malloc(sizeof(t_list));
 	if (!new || !lst)
 		return (0);
-	*new = (t_list) {(void *)op, NULL};
+	*new = (t_list){(void *)op, NULL};
 	if (!*lst)
 	{
 		*lst = new;

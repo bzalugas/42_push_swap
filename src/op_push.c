@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:55:37 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/14 10:54:23 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:39:09 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,12 @@ void	pb(t_stacks *s)
 {
 	push(s->a, s->b);
 	ft_cmdadd_back(&s->cmds, PB);
+}
+
+void	push_to(t_stacks *s, t_stack *to)
+{
+	if (to == s->a)
+		pa(s);
+	else
+		pb(s);
 }

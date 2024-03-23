@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:59:29 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 15:27:45 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:41:15 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,35 +41,25 @@ int	cost_push(t_stack *from, t_stack *to, t_frame *f)
 	return (cost + 1);
 }
 
-void	push_to(t_stacks *s, t_frame *f, bool to_a)
+void	push_frame(t_stacks *s, t_stack *from, t_stack *to, t_frame *f)
 {
-	int		mid_a;
-	int		mid_b;
-	t_frame	*target;
+	int		mid_f;
+	int		mid_t;
 
-	target = f->target;
-	if (to_a)
-	{
-		target = f;
-		f = f->target;
-	}
-	mid_a = ((s->a->size + (s->a->size % 2 != 0)) / 2) - 1;
-	mid_b = ((s->b->size + (s->b->size % 2 != 0)) / 2) - 1;
-	while (f->i <= mid_a && f->i > 0)
-		ra(s);
+	mid_f = ((from->size + (from->size % 2 != 0)) / 2) - 1;
+	mid_t = ((to->size + (to->size % 2 != 0)) / 2) - 1;
+	while (f->i <= mid_f && f->i > 0)
+		rs(s, from);
 	while (f->i > 0)
-		rra(s);
-	if (target)
+		rrs(s, from);
+	if (f->target)
 	{
-		while (target->i <= mid_b && target->i > 0)
-			rb(s);
-		while (target->i > 0)
-			rrb(s);
+		while (f->target->i <= mid_t && f->target->i > 0)
+			rs(s, to);
+		while (f->target->i > 0)
+			rrs(s, to);
 	}
-	if (to_a)
-		pa(s);
-	else
-		pb(s);
+	push_to(s, to);
 }
 
 void	push_non_sorted(t_stacks *s)
@@ -94,7 +84,7 @@ void	push_non_sorted(t_stacks *s)
 		top = top->next;
 	}
 	if (cheapest)
-		push_to(s, cheapest, 0);
+		push_frame(s, s->a, s->b, cheapest);
 }
 
 void	get_back_b(t_stacks *s)
@@ -121,6 +111,6 @@ void	get_back_b(t_stacks *s)
 			top = top->next;
 		}
 		if (cheapest)
-			push_to(s, cheapest, 1);
+			push_frame(s, s->b, s->a, cheapest);
 	}
 }

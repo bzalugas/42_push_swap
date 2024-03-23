@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 14:52:13 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:50:26 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
 
-typedef enum	e_op
+typedef enum e_op
 {
 	S,
 	R,
@@ -74,20 +74,20 @@ void			*stacks_clear(t_stacks *stacks);
 
 /********************************* OPERATIONS *********************************/
 
-void			swap(t_stack *s);
 void			sa(t_stacks *s);
 void			sb(t_stacks *s);
 void			ss(t_stacks *s);
 
+void			push_to(t_stacks *s, t_stack *to);
 void			pa(t_stacks *s);
 void			pb(t_stacks *s);
 
-void			rotate(t_stack *s);
+void			rs(t_stacks *s, t_stack *st);
 void			ra(t_stacks *s);
 void			rb(t_stacks *s);
 void			rr(t_stacks *s);
 
-void			rrotate(t_stack *s);
+void			rrs(t_stacks *s, t_stack *st);
 void			rra(t_stacks *s);
 void			rrb(t_stacks *s);
 void			rrr(t_stacks *s);
@@ -108,6 +108,7 @@ unsigned int	ft_abs(int n);
 long			ft_atol_forward(const char *nptr, int *i);
 int				finish_error(t_stacks *s);
 int				parse_push_swap(int ac, char *av[], t_stacks *s);
+char			*op_to_text(void *content);
 int				ft_cmdadd_back(t_list **lst, t_op op);
 void			ft_cmdclear(t_list **lst, void (*del)(void *));
 int				ft_max_int(int a, int b);

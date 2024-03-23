@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 13:28:33 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/08 19:40:43 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:50:32 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,31 @@ int	parse_push_swap(int ac, char *av[], t_stacks *s)
 	if (ac == 2 && !parse_one(av[1], s))
 		return (0);
 	return (1);
+}
+
+char	*op_to_text(void *content)
+{
+	if (content == (void *)SA)
+		return ("sa");
+	if (content == (void *)SB)
+		return ("sb");
+	if (content == (void *)SS)
+		return ("ss");
+	if (content == (void *)PA)
+		return ("pa");
+	if (content == (void *)PB)
+		return ("pb");
+	if (content == (void *)RA)
+		return ("ra");
+	if (content == (void *)RB)
+		return ("rb");
+	if (content == (void *)RR)
+		return ("rr");
+	if (content == (void *)RRA)
+		return ("rra");
+	if (content == (void *)RRB)
+		return ("rrb");
+	if (content == (void *)RRR)
+		return ("rrr");
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/22 17:49:07 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:50:42 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,7 @@
 void	test_cost_b(t_stacks *s);
 void	test_get_b_target(t_stacks *s);
 void	test_push_non_sorted(t_stacks *s);
-
-static char	*op_to_text(void *content)
-{
-	t_op	op;
-
-	op = (unsigned long)content;
-	if (op == SA)
-		return ("sa");
-	if (op == SB)
-		return ("sb");
-	if (op == SS)
-		return ("ss");
-	if (op == PA)
-		return ("pa");
-	if (op == PB)
-		return ("pb");
-	if (op == RA)
-		return ("ra");
-	if (op == RB)
-		return ("rb");
-	if (op == RR)
-		return ("rr");
-	if (op == RRA)
-		return ("rra");
-	if (op == RRB)
-		return ("rrb");
-	if (op == RRR)
-		return ("rrr");
-	return (NULL);
-}
+void	test_optimize(void);
 
 void	display_cmds(t_list *cmds)
 {
@@ -64,18 +35,15 @@ static void	optimize_rotate(t_list *cmds)
 	cmd = cmds;
 	while (cmd)
 	{
-		if (last && (cmd->content == (void*)PB || cmd->content == (void*)PA))
-		{
-			cmd = last->next;
+		if (last && (cmd->content == (void *)PB || cmd->content == (void *)PA))
 			last = NULL;
-		}
-		if (cmd->content == (void*)RA || cmd->content == (void*)RB)
+		if (cmd->content == (void *)RA || cmd->content == (void *)RB)
 		{
 			if (!last)
 				last = cmd;
 			else if (last && cmd->content != last->content)
 			{
-				last->content = (void*)RR;
+				last->content = (void *)RR;
 				ft_lstremove(&cmds, cmd, NULL);
 				cmd = last;
 				last = NULL;
@@ -94,18 +62,15 @@ static void	optimize_rrotate(t_list *cmds)
 	cmd = cmds;
 	while (cmd)
 	{
-		if (last && (cmd->content == (void*)PB || cmd->content == (void*)PA))
-		{
-			cmd = last->next;
+		if (last && (cmd->content == (void *)PB || cmd->content == (void *)PA))
 			last = NULL;
-		}
-		if (cmd->content == (void*)RRA || cmd->content == (void*)RRB)
+		if (cmd->content == (void *)RRA || cmd->content == (void *)RRB)
 		{
 			if (!last)
 				last = cmd;
 			else if (last && cmd->content != last->content)
 			{
-				last->content = (void*)RRR;
+				last->content = (void *)RRR;
 				ft_lstremove(&cmds, cmd, NULL);
 				cmd = last;
 				last = NULL;
@@ -120,7 +85,7 @@ void	optimize_cmds(t_list *cmds)
 	optimize_rotate(cmds);
 	optimize_rrotate(cmds);
 }
-void	test_optimize();
+
 int	main(int ac, char *av[])
 {
 	t_stacks	s;
@@ -133,7 +98,6 @@ int	main(int ac, char *av[])
 	sort(&s);
 	optimize_cmds(s.cmds);
 	display_cmds(s.cmds);
-	/* test_optimize(); */
 	stacks_clear(&s);
 	return (0);
 }

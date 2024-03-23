@@ -6,13 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 13:42:32 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/12 14:27:19 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:38:09 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	rrotate(t_stack *s)
+static void	rrotate(t_stack *s)
 {
 	if (s->size < 2)
 		return ;
@@ -42,4 +42,12 @@ void	rrr(t_stacks *s)
 	rra(s);
 	rrb(s);
 	ft_cmdadd_back(&s->cmds, RRR);
+}
+
+void	rrs(t_stacks *s, t_stack *st)
+{
+	if (st == s->a)
+		rra(s);
+	else
+		rrb(s);
 }

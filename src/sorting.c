@@ -6,13 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 16:13:36 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:53:07 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void sort_three(t_stacks *s)
+void	sort_three(t_stacks *s)
 {
 	t_stack	*a;
 
