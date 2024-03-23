@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/22 15:43:08 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:52:13 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void			rrr(t_stacks *s);
 void			get_a_target(t_stacks *s, t_frame *f);
 void			get_b_target(t_stacks *s, t_frame *f);
 void			get_all_b_targets(t_stacks *s);
-int				cost_push(t_stacks *s, t_frame *f);
+int				cost_push(t_stack *from, t_stack *to, t_frame *f);
 void			push_non_sorted(t_stacks *s);
 void			get_back_b(t_stacks *s);
 void			sort(t_stacks *s);

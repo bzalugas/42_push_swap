@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 07:08:10 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/22 17:07:26 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:56:03 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	test_cost_b(t_stacks *s)
 	while (top)
 	{
 		get_b_target(s, top);
-		cost = cost_push(s, top);
+		cost = cost_push(s->a, s->b, top);
 		ft_printf("cost for %d=%d\n", top->n, cost);
 		top = top->next;
 	}
@@ -34,7 +34,7 @@ void	test_cost_b(t_stacks *s)
 	while (top)
 	{
 		get_b_target(s, top);
-		cost = cost_push(s, top);
+		cost = cost_push(s->a, s->b, top);
 		ft_printf("cost for %d=%d\n", top->n, cost);
 		top = top->next;
 	}
@@ -44,7 +44,7 @@ void	test_cost_b(t_stacks *s)
 	while (top)
 	{
 		get_b_target(s, top);
-		cost = cost_push(s, top);
+		cost = cost_push(s->a, s->b, top);
 		ft_printf("cost for %d=%d\n", top->n, cost);
 		top = top->next;
 	}
