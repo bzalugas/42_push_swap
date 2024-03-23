@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:59:29 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 16:41:15 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 18:20:07 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,14 @@ void	push_frame(t_stacks *s, t_stack *from, t_stack *to, t_frame *f)
 	push_to(s, to);
 }
 
+/* bool	sorted(t_stacks *s, t_stack *from, t_frame *f) */
+/* { */
+/* 	get_real_target(s, f); */
+/* 	if (f->next == f->target || (!f->next && f->target == from->top)) */
+/* 		return (true); */
+/* 	return (false); */
+/* } */
+
 void	push_non_sorted(t_stacks *s)
 {
 	t_frame	*cheapest;
@@ -74,7 +82,7 @@ void	push_non_sorted(t_stacks *s)
 	top = s->a->top;
 	while (top && s->a->size > 3)
 	{
-		get_b_target(s, top);
+		get_b_target(s->b, top);
 		cost = cost_push(s->a, s->b, top);
 		if (min_cost == 0 || cost < min_cost)
 		{
@@ -82,6 +90,8 @@ void	push_non_sorted(t_stacks *s)
 			cheapest = top;
 		}
 		top = top->next;
+		if (min_cost == 1)
+			top = NULL;
 	}
 	if (cheapest)
 		push_frame(s, s->a, s->b, cheapest);
@@ -101,7 +111,7 @@ void	get_back_b(t_stacks *s)
 		top = s->b->top;
 		while (top)
 		{
-			get_a_target(s, top);
+			get_a_target(s->a, top);
 			cost = cost_push(s->b, s->a, top);
 			if (min_cost == 0 || cost < min_cost)
 			{
@@ -109,6 +119,8 @@ void	get_back_b(t_stacks *s)
 				cheapest = top;
 			}
 			top = top->next;
+			if (min_cost == 1)
+				top = NULL;
 		}
 		if (cheapest)
 			push_frame(s, s->b, s->a, cheapest);

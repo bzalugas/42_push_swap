@@ -6,16 +6,11 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 16:50:42 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 18:01:11 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-void	test_cost_b(t_stacks *s);
-void	test_get_b_target(t_stacks *s);
-void	test_push_non_sorted(t_stacks *s);
-void	test_optimize(void);
 
 void	display_cmds(t_list *cmds)
 {
@@ -95,6 +90,7 @@ int	main(int ac, char *av[])
 	s = stacks_new();
 	if (!parse_push_swap(ac, av, &s))
 		return (finish_error(&s));
+	/* test_sorted(&s); */
 	sort(&s);
 	optimize_cmds(s.cmds);
 	display_cmds(s.cmds);

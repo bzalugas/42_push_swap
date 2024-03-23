@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 07:08:10 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 15:30:53 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/23 18:19:33 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	test_cost_b(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s, top);
+		get_b_target(s->b, top);
 		cost = cost_push(s->a, s->b, top);
 		ft_printf("cost for %d=%d\n", top->n, cost);
 		top = top->next;
@@ -33,7 +33,7 @@ void	test_cost_b(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s, top);
+		get_b_target(s->b, top);
 		cost = cost_push(s->a, s->b, top);
 		ft_printf("cost for %d=%d\n", top->n, cost);
 		top = top->next;
@@ -43,7 +43,7 @@ void	test_cost_b(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s, top);
+		get_b_target(s->b, top);
 		cost = cost_push(s->a, s->b, top);
 		ft_printf("cost for %d=%d\n", top->n, cost);
 		top = top->next;
@@ -58,7 +58,7 @@ void	test_get_b_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s, top);
+		get_b_target(s->b, top);
 		if (!top->target)
 			ft_printf("No target for %d\n", top->n);
 		else
@@ -72,7 +72,7 @@ void	test_get_b_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s, top);
+		get_b_target(s->b, top);
 		if (!top->target)
 			ft_printf("No target for %d\n", top->n);
 		else
@@ -84,7 +84,7 @@ void	test_get_b_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s, top);
+		get_b_target(s->b, top);
 		if (!top->target)
 			ft_printf("No target for %d\n", top->n);
 		else
@@ -96,7 +96,7 @@ void	test_get_b_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s, top);
+		get_b_target(s->b, top);
 		if (!top->target)
 			ft_printf("No target for %d\n", top->n);
 		else
@@ -111,7 +111,7 @@ void	test_get_b_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s, top);
+		get_b_target(s->b, top);
 		if (!top->target)
 			ft_printf("No target for %d\n", top->n);
 		else
@@ -133,34 +133,85 @@ void	test_push_non_sorted(t_stacks *s)
 
 }
 
-/* void	optimize_cmds(t_list *cmds); */
-/* void	display_cmds(t_list *cmds); */
-/* void	test_optimize() */
-/* { */
-/* 	t_list	*cmds; */
+void	test_optimize(void)
+{
+	t_list	*cmds;
 
-/* 	cmds = NULL; */
-/* 	ft_cmdadd_back(&cmds, PB); */
-/* 	ft_cmdadd_back(&cmds, PB); */
-/* 	ft_cmdadd_back(&cmds, RA); */
-/* 	ft_cmdadd_back(&cmds, RA); */
-/* 	ft_cmdadd_back(&cmds, RB); */
-/* 	ft_cmdadd_back(&cmds, RB); */
-/* 	ft_cmdadd_back(&cmds, PB); */
-/* 	ft_cmdadd_back(&cmds, PB); */
-/* 	ft_cmdadd_back(&cmds, RA); */
-/* 	ft_cmdadd_back(&cmds, RA); */
-/* 	ft_cmdadd_back(&cmds, PB); */
-/* 	ft_cmdadd_back(&cmds, RB); */
-/* 	ft_cmdadd_back(&cmds, RB); */
-/* 	ft_cmdadd_back(&cmds, PA); */
-/* 	ft_cmdadd_back(&cmds, RA); */
-/* 	ft_cmdadd_back(&cmds, RB); */
-/* 	ft_cmdadd_back(&cmds, RA); */
-/* 	ft_cmdadd_back(&cmds, SA); */
-/* 	ft_cmdadd_back(&cmds, RB); */
-/* 	display_cmds(cmds); */
-/* 	ft_putendl_fd("\n", 1); */
-/* 	optimize_cmds(cmds); */
-/* 	display_cmds(cmds); */
-/* } */
+	cmds = NULL;
+	ft_cmdadd_back(&cmds, PB);
+	ft_cmdadd_back(&cmds, PB);
+	ft_cmdadd_back(&cmds, RA);
+	ft_cmdadd_back(&cmds, RA);
+	ft_cmdadd_back(&cmds, RB);
+	ft_cmdadd_back(&cmds, RB);
+	ft_cmdadd_back(&cmds, PB);
+	ft_cmdadd_back(&cmds, PB);
+	ft_cmdadd_back(&cmds, RA);
+	ft_cmdadd_back(&cmds, RA);
+	ft_cmdadd_back(&cmds, PB);
+	ft_cmdadd_back(&cmds, RB);
+	ft_cmdadd_back(&cmds, RB);
+	ft_cmdadd_back(&cmds, PA);
+	ft_cmdadd_back(&cmds, RA);
+	ft_cmdadd_back(&cmds, RB);
+	ft_cmdadd_back(&cmds, RA);
+	ft_cmdadd_back(&cmds, SA);
+	ft_cmdadd_back(&cmds, RB);
+	display_cmds(cmds);
+	ft_putendl_fd("\n", 1);
+	optimize_cmds(cmds);
+	display_cmds(cmds);
+}
+
+void	test_real_target(t_stacks *s)
+{
+	t_frame	*top;
+
+	top = s->a->top;
+	while (top)
+	{
+		get_real_target(s, top);
+		ft_printf("real target of %d is %d\n", top->n, top->target->n);
+		top = top->next;
+	}
+	pb(s);
+	pb(s);
+	pb(s);
+	display_cmds(s->cmds);
+	top = s->a->top;
+	while (top)
+	{
+		get_real_target(s, top);
+		ft_printf("real target of %d is %d\n", top->n, top->target->n);
+		top = top->next;
+	}
+}
+
+void	test_sorted(t_stacks *s)
+{
+	t_frame	*top;
+	bool	is_sorted;
+
+	top = s->a->top;
+	while (top)
+	{
+		get_real_target(s, top);
+		is_sorted = sorted(s, s->a, top);
+		ft_printf("%d is %s\n", top->n, is_sorted ? "sorted." : "not sorted.");
+		top = top->next;
+	}
+	pb(s);
+	pb(s);
+	pb(s);
+	rra(s);
+	rra(s);
+	display_cmds(s->cmds);
+	top = s->a->top;
+	while (top)
+	{
+		get_real_target(s, top);
+		is_sorted = sorted(s, s->a, top);
+		ft_printf("%d is %s\n", top->n, is_sorted ? "sorted." : "not sorted.");
+		top = top->next;
+	}
+}
