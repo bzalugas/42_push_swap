@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 07:08:10 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 18:51:50 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/25 00:26:44 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	test_cost_b(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s->b, top);
+		get_b_target(s->b, top, true);
 		cost = cost_push(s->a, s->b, top);
 		ft_printf("cost for %d=%d\n", top->n, cost);
 		top = top->next;
@@ -33,7 +33,7 @@ void	test_cost_b(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s->b, top);
+		get_b_target(s->b, top, true);
 		cost = cost_push(s->a, s->b, top);
 		ft_printf("cost for %d=%d\n", top->n, cost);
 		top = top->next;
@@ -43,7 +43,7 @@ void	test_cost_b(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s->b, top);
+		get_b_target(s->b, top, true);
 		cost = cost_push(s->a, s->b, top);
 		ft_printf("cost for %d=%d\n", top->n, cost);
 		top = top->next;
@@ -58,7 +58,7 @@ void	test_get_b_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s->b, top);
+		get_b_target(s->b, top, true);
 		if (!top->target)
 			ft_printf("No target for %d\n", top->n);
 		else
@@ -72,7 +72,7 @@ void	test_get_b_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s->b, top);
+		get_b_target(s->b, top, true);
 		if (!top->target)
 			ft_printf("No target for %d\n", top->n);
 		else
@@ -84,7 +84,7 @@ void	test_get_b_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s->b, top);
+		get_b_target(s->b, top, true);
 		if (!top->target)
 			ft_printf("No target for %d\n", top->n);
 		else
@@ -96,7 +96,7 @@ void	test_get_b_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s->b, top);
+		get_b_target(s->b, top, true);
 		if (!top->target)
 			ft_printf("No target for %d\n", top->n);
 		else
@@ -111,7 +111,7 @@ void	test_get_b_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_b_target(s->b, top);
+		get_b_target(s->b, top, true);
 		if (!top->target)
 			ft_printf("No target for %d\n", top->n);
 		else
@@ -170,7 +170,7 @@ void	test_real_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_real_target(s, top);
+		get_real_target(s, top, true);
 		ft_printf("real target of %d is %d\n", top->n, top->target->n);
 		top = top->next;
 	}
@@ -181,7 +181,7 @@ void	test_real_target(t_stacks *s)
 	top = s->a->top;
 	while (top)
 	{
-		get_real_target(s, top);
+		get_real_target(s, top, true);
 		ft_printf("real target of %d is %d\n", top->n, top->target->n);
 		top = top->next;
 	}
@@ -195,7 +195,7 @@ void	test_real_target(t_stacks *s)
 /* 	top = s->a->top; */
 /* 	while (top) */
 /* 	{ */
-/* 		get_real_target(s, top); */
+/* 		get_real_target(s, top, true); */
 /* 		is_sorted = sorted(s, s->a, top); */
 /* 		ft_printf("%d is %s\n", top->n, is_sorted ? "sorted." : "not sorted."); */
 /* 		top = top->next; */
@@ -209,7 +209,7 @@ void	test_real_target(t_stacks *s)
 /* 	top = s->a->top; */
 /* 	while (top) */
 /* 	{ */
-/* 		get_real_target(s, top); */
+/* 		get_real_target(s, top, true); */
 /* 		is_sorted = sorted(s, s->a, top); */
 /* 		ft_printf("%d is %s\n", top->n, is_sorted ? "sorted." : "not sorted."); */
 /* 		top = top->next; */

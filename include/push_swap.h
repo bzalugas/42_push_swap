@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/24 17:16:04 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:58:51 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,11 @@ void			rrr(t_stacks *s);
 
 /******************************** SORTING *************************************/
 
-void			get_a_target(t_stack *from, t_frame *f);
-void			get_b_target(t_stack *from, t_frame *f);
-void			get_real_target(t_stacks *s, t_frame *f);
+t_frame			*get_a_target(t_stack *from, t_frame *f, bool set);
+t_frame			*get_b_target(t_stack *from, t_frame *f, bool set);
+t_frame			*get_real_target(t_stacks *s, t_frame *f, bool set);
+void			push_frame(t_stacks *s, t_stack *from, t_stack *to, t_frame *f);
+int				cost_sort(t_stack *s, t_frame *f);
 int				cost_push(t_stack *from, t_stack *to, t_frame *f);
 void			push_non_sorted(t_stacks *s);
 void			get_back_b(t_stacks *s);

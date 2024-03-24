@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:05:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 18:50:06 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/25 00:28:37 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	stacks_get_median(t_stacks *s)
 	last = stack_get_min(s->a);
 	while (mid_a > 0)
 	{
-		get_real_target(s, last);
+		get_real_target(s, last, true);
 		last = last->target;
 		mid_a--;
 	}

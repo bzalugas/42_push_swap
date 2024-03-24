@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/24 18:32:56 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/25 00:37:53 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	sort_three(t_stacks *s)
 	t_stack	*a;
 
 	a = s->a;
-	if (a->size < 3)
+	if (a->size != 3)
 		return ;
 	if (a->top == stack_get_max(a))
 		sa(s);
@@ -40,47 +40,66 @@ void	order_stack(t_stacks *s)
 		rra(s);
 }
 
-void	swap_frames_a(t_stacks *s, t_frame *f1)
+void	sort_frame(t_stacks *s, t_frame *f)
 {
-	int	target_i;
-
-	target_i = 0;
-	/* if (f1 == stack_get_max(s->a)) */
-	/* 	target_i = s->a->size - 1; */
-	while (f1->i <= s->a->mid && f1->i != target_i)
+	if (f->target == get_b_target(s->b, f, false))
+	{
+		push_frame(s, s->a, s->b, f);
+		return ;
+	}
+	if (f == stack_get_max(s->a))
+		return ;
+	while (f->i <= s->a->mid && f->i > 0)
 		ra(s);
-	while (f1->i > s->a->mid && f1->i != target_i)
+	while (f->i > s->a->mid && f->i > 0)
 		rra(s);
-	/* if (target_i == 0) */
-		sa(s);
+
+	/* get_a_target(s->a, f); */
+	/* get_a_target(s->a, f->next); */
+	/* if (f->next->target == f) */
+	/* 	sa(s); */
+	/* else */
+	/* { */
+		pb(s);
+		push_frame(s, s->b, s->a, f);
+	/* } */
 }
 
 void	sort_stack(t_stacks *ss, t_stack *s)
 {
 	t_frame	*top;
-	t_frame	*min;
-	t_frame	*max;
-
-	if (s->size == 3)
+	int		min_cost;
+	int		cost;
+	t_frame	*cheapest;
+	t_frame	*target;
+	int score;
+	while (stack_score(s) != s->size)
 	{
-		sort_three(ss);
-		return ;
-	}
-	min = stack_get_min(s);
-	max = stack_get_max(s);
-	top = s->top;
-	while (top)
-	{
-		if (!top->next && top != max)
-			ft_printf("%d is not max.\n", top->n);
-		if ((top->next && top->next->n < top->n && top != max
-			&& top->next != min) || (!top->next && top != max))
+		score = stack_score(s);
+		(void)score;
+		min_cost = 0;
+		cheapest = NULL;
+		top = s->top;
+		while (top)
 		{
-			swap_frames_a(ss, top);
-			top = s->top;
-		}
-		else
+			target = get_a_target(s, top, false);
+			get_real_target(ss, top, true);
+			if (top->next != top->target)
+			{
+				if (target != top->target)
+					cost = cost_push(ss->a, ss->b, top);
+				else
+					cost = cost_sort(s, top);
+				if (min_cost == 0 || cost < min_cost)
+				{
+					min_cost = cost;
+					cheapest = top;
+				}
+			}
 			top = top->next;
+		}
+		if (cheapest)
+			sort_frame(ss, cheapest);
 	}
 }
 
@@ -89,8 +108,10 @@ void	sort(t_stacks *s)
 	stacks_get_median(s);
 	while (stack_score(s->a) != s->total)
 	{
-		if (s->a->size == (s->total + (s->total % 2 != 0)) / 2)
+		if ((s->a->size == 3)
+				 || s->a->size == (s->total + (s->total % 2 != 0)) / 2)
 		{
+			sort_three(s);
 			sort_stack(s, s->a);
 			get_back_b(s);
 		}
