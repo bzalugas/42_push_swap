@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:55:37 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 16:39:09 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:16:38 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static void	push(t_stack *from, t_stack *to)
 		to->bot = to->top;
 	stack_update_i(from);
 	stack_update_i(to);
+	stack_update_mid(from);
+	stack_update_mid(to);
 }
 
 void	pa(t_stacks *s)

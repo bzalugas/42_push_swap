@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:04:56 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/22 14:38:30 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:15:48 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,9 @@ t_frame	*stack_get_min(t_stack *s)
 		top = top->next;
 	}
 	return (min);
+}
+
+void	stack_update_mid(t_stack *s)
+{
+	s->mid = ((s->size + (s->size % 2 != 0)) / 2) - 1;
 }

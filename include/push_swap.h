@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 18:51:14 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:16:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_stack
 	t_frame	*top;
 	t_frame	*bot;
 	int		size;
+	int		mid;
 }				t_stack;
 
 typedef struct s_stacks
@@ -68,6 +69,7 @@ t_frame			*stack_get_n(t_stack *s, int n);
 int				stack_score(t_stack *s);
 t_frame			*stack_get_max(t_stack *s);
 t_frame			*stack_get_min(t_stack *s);
+void			stack_update_mid(t_stack *s);
 
 t_stacks		stacks_new(void);
 int				stacks_add_a(t_stacks *stacks, int n);

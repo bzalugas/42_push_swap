@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:59:29 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 19:05:13 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/24 18:24:09 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	push_non_sorted(t_stacks *s)
 	top = s->a->top;
 	while (top && s->a->size > 3)
 	{
-		if ((s->a->size > s->total / 2 && top->n <= s->med)
-			|| (s->a->size <= s->total / 2 && top->n > s->med))
-		{
+		/* if ((s->a->size > s->total / 2 && top->n <= s->med) */
+		/* 	|| (s->a->size <= s->total / 2 && top->n > s->med)) */
+		/* { */
 			get_b_target(s->b, top);
 			cost = cost_push(s->a, s->b, top);
 			if (min_cost == 0 || cost < min_cost)
@@ -92,13 +92,17 @@ void	push_non_sorted(t_stacks *s)
 				min_cost = cost;
 				cheapest = top;
 			}
-		}
+		/* } */
 		top = top->next;
 		if (min_cost == 1)
 			top = NULL;
 	}
 	if (cheapest)
+	{
+		/* ft_printf("cheapest = %d\n", min_cost); */
 		push_frame(s, s->a, s->b, cheapest);
+	}
+
 }
 
 void	get_back_b(t_stacks *s)

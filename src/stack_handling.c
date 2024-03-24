@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:31:34 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/12 15:02:07 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:14:19 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	stack_add_back(t_stack *stack, int n)
 	if (!new)
 		return (0);
 	stack->size++;
+	stack->mid = ((stack->size + (stack->size % 2 != 0)) / 2) - 1;
 	if (!stack->top)
 	{
 		stack->top = new;
