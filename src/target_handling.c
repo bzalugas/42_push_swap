@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:16:50 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/25 01:04:53 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/25 01:21:49 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_frame	*get_a_target(t_stack *from, t_frame *f, bool set)
 	if (target->n <= f->n)
 		target = stack_get_min(from);
 	if (set)
-	f->target = target;
+		f->target = target;
 	return (target);
 }
 

@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/03/24 16:47:11 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/03/25 01:18:33 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -61,7 +61,7 @@ OBJ		:=	$(addprefix $(OBJDIR)/, $(OBJ))
 
 CC		:=	cc
 
-CFLAGS		:=	-Wall -Wextra -Werror -MMD -g
+CFLAGS		:=	-Wall -Wextra -Werror -MMD
 
 ########### COLORS ##########
 
