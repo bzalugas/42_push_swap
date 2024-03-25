@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:16:50 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/25 00:31:08 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/25 01:04:53 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,6 @@ t_frame	*get_b_target(t_stack *from, t_frame *f, bool set)
 	}
 	if (target->n >= f->n)
 		target = stack_get_max(from);
-	if (set)
-		f->target = target;
-	return (target);
-}
-
-t_frame	*get_real_target(t_stacks *s, t_frame *f, bool set)
-{
-	t_frame	*ta;
-	t_frame	*tb;
-	t_frame	*target;
-
-	if (!f)
-		return (NULL);
-	tb = get_a_target(s->b, f, false);
-	ta = get_a_target(s->a, f, false);
-	target = NULL;
-	if (!tb)
-		target = ta;
-	else if (!ta)
-		target = tb;
-	else if (tb && tb->n > f->n && tb->n < ta->n)
-		target = tb;
-	else if (tb && f == stack_get_max(s->a) && tb->n < ta->n)
-		target = tb;
 	if (set)
 		f->target = target;
 	return (target);

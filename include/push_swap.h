@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/24 23:58:51 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/25 01:10:45 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct s_stacks
 	t_stack	*a;
 	t_stack	*b;
 	int		total;
-	int		med;
 	t_list	*cmds;
 }				t_stacks;
 
@@ -74,7 +73,6 @@ void			stack_update_mid(t_stack *s);
 t_stacks		stacks_new(void);
 int				stacks_add_a(t_stacks *stacks, int n);
 void			*stacks_clear(t_stacks *stacks);
-void			stacks_get_median(t_stacks *s);
 
 /********************************* OPERATIONS *********************************/
 
@@ -101,9 +99,6 @@ void			rrr(t_stacks *s);
 t_frame			*get_a_target(t_stack *from, t_frame *f, bool set);
 t_frame			*get_b_target(t_stack *from, t_frame *f, bool set);
 t_frame			*get_real_target(t_stacks *s, t_frame *f, bool set);
-void			push_frame(t_stacks *s, t_stack *from, t_stack *to, t_frame *f);
-int				cost_sort(t_stack *s, t_frame *f);
-int				cost_push(t_stack *from, t_stack *to, t_frame *f);
 void			push_non_sorted(t_stacks *s);
 void			get_back_b(t_stacks *s);
 void			sort(t_stacks *s);
@@ -121,17 +116,16 @@ int				ft_max_int(int a, int b);
 int				ft_min_int(int a, int b);
 void			ft_lstremove(t_list **lst, t_list *link, void (*del)(void *));
 
-
 /******************************* TESTS ****************************************/
-void	display_cmds(t_list *cmds);//remove
-void	optimize_cmds(t_list *cmds);//remove
-bool	sorted(t_stacks *s, t_stack *from, t_frame *f);//remove
-void	test_cost_b(t_stacks *s); //remove
-void	test_get_b_target(t_stacks *s);//remove
-void	test_push_non_sorted(t_stacks *s);//remove
-void	test_optimize(void);//remove
-void	test_real_target(t_stacks *s);//remove
-void	test_sorted(t_stacks *s);//remove
-void	test_get_median(t_stacks *s);//remove
+/* void	display_cmds(t_list *cmds);//remove */
+/* void	optimize_cmds(t_list *cmds);//remove */
+/* bool	sorted(t_stacks *s, t_stack *from, t_frame *f);//remove */
+/* void	test_cost_b(t_stacks *s); //remove */
+/* void	test_get_b_target(t_stacks *s);//remove */
+/* void	test_push_non_sorted(t_stacks *s);//remove */
+/* void	test_optimize(void);//remove */
+/* void	test_real_target(t_stacks *s);//remove */
+/* void	test_sorted(t_stacks *s);//remove */
+/* void	test_get_median(t_stacks *s);//remove */
 
 #endif

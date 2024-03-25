@@ -6,13 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:32:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 19:01:53 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/25 01:09:44 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	display_cmds(t_list *cmds)
+static void	display_cmds(t_list *cmds)
 {
 	while (cmds)
 	{
@@ -75,7 +75,7 @@ static void	optimize_rrotate(t_list *cmds)
 	}
 }
 
-void	optimize_cmds(t_list *cmds)
+static void	optimize_cmds(t_list *cmds)
 {
 	optimize_rotate(cmds);
 	optimize_rrotate(cmds);
@@ -90,7 +90,6 @@ int	main(int ac, char *av[])
 	s = stacks_new();
 	if (!parse_push_swap(ac, av, &s))
 		return (finish_error(&s));
-	/* test_get_median(&s); */
 	sort(&s);
 	optimize_cmds(s.cmds);
 	display_cmds(s.cmds);
