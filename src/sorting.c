@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/25 01:11:08 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/25 01:15:07 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,12 @@ static void	sort_three(t_stacks *s)
 static void	order_stack(t_stacks *s)
 {
 	t_frame	*min;
-	int		mid_a;//use s->a->mid
 
-	mid_a = ((s->a->size + (s->a->size % 2 != 0)) / 2) - 1;
+	s->a->mid = ((s->a->size + (s->a->size % 2 != 0)) / 2) - 1;
 	min = stack_get_min(s->a);
-	while (min->i <= mid_a && min->i > 0)
+	while (min->i <= s->a->mid && min->i > 0)
 		ra(s);
-	while (min->i > mid_a && min->i > 0)
+	while (min->i > s->a->mid && min->i > 0)
 		rra(s);
 }
 

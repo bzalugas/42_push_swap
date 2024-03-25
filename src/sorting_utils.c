@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:59:29 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/25 01:10:47 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/03/25 01:16:27 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,21 @@
 static int	cost_push(t_stack *from, t_stack *to, t_frame *f)
 {
 	int	cost;
-	int	mid_f;
-	int	mid_t;
 	int	cost_f;
 	int	cost_t;
 
-	mid_f = ((from->size + (from->size % 2 != 0)) / 2) - 1;
-	mid_t = ((to->size + (to->size % 2 != 0)) / 2) - 1;
-	if (f->i <= mid_f)
+	if (f->i <= from->mid)
 		cost_f = f->i;
 	else
 		cost_f = from->size - f->i;
 	if (!f->target)
 		return (cost_f + 1);
-	if (f->target->i <= mid_t)
+	if (f->target->i <= to->mid)
 		cost_t = f->target->i;
 	else
 		cost_t = to->size - f->target->i;
-	if ((f->i <= mid_f && f->target->i <= mid_t)
-		|| (f->i > mid_f && f->target->i > mid_t))
+	if ((f->i <= from->mid && f->target->i <= to->mid)
+		|| (f->i > from->mid && f->target->i > to->mid))
 		cost = ft_max_int(cost_f, cost_t);
 	else
 		cost = ft_max_int(from->size - f->i, to->size - f->target->i);
@@ -43,18 +39,13 @@ static int	cost_push(t_stack *from, t_stack *to, t_frame *f)
 
 static void	push_frame(t_stacks *s, t_stack *from, t_stack *to, t_frame *f)
 {
-	int		mid_f;
-	int		mid_t;
-
-	mid_f = ((from->size + (from->size % 2 != 0)) / 2) - 1;
-	mid_t = ((to->size + (to->size % 2 != 0)) / 2) - 1;
-	while (f->i <= mid_f && f->i > 0)
+	while (f->i <= from->mid && f->i > 0)
 		rs(s, from);
 	while (f->i > 0)
 		rrs(s, from);
 	if (f->target)
 	{
-		while (f->target->i <= mid_t && f->target->i > 0)
+		while (f->target->i <= to->mid && f->target->i > 0)
 			rs(s, to);
 		while (f->target->i > 0)
 			rrs(s, to);
