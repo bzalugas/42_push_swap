@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 20:05:12 by bazaluga          #+#    #+#             */
-/*   Updated: 2023/12/10 20:17:22 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:17:33 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (!lst || !del)
+	if (!lst)
 		return ;
-	del(lst->content);
+	if (del)
+		del(lst->content);
 	free(lst);
 }
