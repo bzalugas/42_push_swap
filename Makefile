@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/03/25 01:18:33 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/04/24 15:14:59 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -81,9 +81,9 @@ $(OBJDIR)/%.o:		$(SRCDIR)/%.c | $(OBJDIR)
 
 $(LIBFTDIR)/$(LIBFT):
 			@echo $(GREEN)"Compiling libft"$(RESET)
-			@make -sC $(LIBFTDIR)
+			@make -C $(LIBFTDIR)
 
-$(NAME):		$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJM)
+$(NAME):	$(OBJ) $(OBJM) | libft
 			@echo $(GREEN)"MANDATORY PART: Linking objects & creating push_swap"
 			$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJM) -o $(NAME) -L$(LIBFTDIR) -lft
 			@echo $(RESET)
@@ -99,7 +99,7 @@ $(NAMEBE):		$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJBE)
 			@echo $(RESET)
 
 libft:
-			@make -sC $(LIBFTDIR)
+			@make -C $(LIBFTDIR)
 
 bonus:		$(NAMEB)
 
