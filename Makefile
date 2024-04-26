@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/04/25 22:36:27 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/04/26 10:59:24 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -50,89 +50,89 @@ OBJMB		:=	$(addprefix $(OBJDIR)/, $(OBJMB))
 
 OBJBE		:=	$(addprefix $(OBJDIR)/, $(OBJBE))
 
-SRC			:=	op_push.c op_revrotate.c op_rotate.c op_swap.c stack_handling.c \
-				stack_handling2.c stacks_handling.c ft_atol_forward.c \
-				main_utils.c ft_abs.c lst_cmds.c ft_min_int.c ft_max_int.c sorting.c \
-				target_handling.c sorting_utils.c ft_lstremove.c
+SRC		:=	op_push.c op_revrotate.c op_rotate.c op_swap.c stack_handling.c \
+			stack_handling2.c stacks_handling.c ft_atol_forward.c \
+			main_utils.c ft_abs.c lst_cmds.c ft_min_int.c ft_max_int.c sorting.c \
+			target_handling.c sorting_utils.c ft_lstremove.c
 
-OBJ			:=	$(SRC:.c=.o)
+OBJ		:=	$(SRC:.c=.o)
 
-SRC			:=	$(addprefix $(SRCDIR)/, $(SRC))
+SRC		:=	$(addprefix $(SRCDIR)/, $(SRC))
 
-OBJ			:=	$(addprefix $(OBJDIR)/, $(OBJ))
+OBJ		:=	$(addprefix $(OBJDIR)/, $(OBJ))
 
-CC			:=	cc
+CC		:=	cc
 
 CFLAGS		:=	-Wall -Wextra -Werror -MMD
 
 ########### COLORS ##########
 
-RED			:=	"\033[31m"
-GREEN		:=	"\033[32m"
+RED		:=	"\033[1;31m"
+GREEN		:=	"\033[1;32m"
 RESET		:=	"\033[0m"
 
-all:			$(NAME)
+all:		$(NAME)
 
 $(OBJDIR):
-				@echo $(GREEN)"Creating obj directory"$(RESET)
-				@mkdir -p $(OBJDIR)
+		@echo $(GREEN)"Creating obj directory"$(RESET)
+		@mkdir -p $(OBJDIR)
 
 $(OBJDIR)/%.o:	$(SRCDIR)/%.c | $(OBJDIR)
-				@echo $(GREEN)"Compiling "$< "to "$@$(RESET)
-				@$(CC) $(CFLAGS) -I$(INCDIR) -o $@ -c $<
+		@echo $(GREEN)"Compiling "$< "to "$@$(RESET)
+		@$(CC) $(CFLAGS) -I$(INCDIR) -o $@ -c $<
 
 $(REALLIBFT):
-				@echo $(GREEN)"Compiling libft"$(RESET)
-				@make -sC $(LIBFTDIR)
+		@echo $(GREEN)"Compiling libft"$(RESET)
+		@make -sC $(LIBFTDIR)
 
-$(NAME):		$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJM)
-				@echo $(GREEN)"MANDATORY PART: Linking objects & creating push_swap"
-				$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJM) -o $(NAME) -L$(LIBFTDIR) -lft
-				@echo $(RESET)
+$(NAME):	$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJM)
+		@echo $(GREEN)"MANDATORY PART: Linking objects & creating push_swap"
+		$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJM) -o $(NAME) -L$(LIBFTDIR) -lft
+		@echo $(RESET)
 
-$(NAMEB):		$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJMB)
-				@echo $(GREEN)"BONUS PART: Linking objects & creating checker"
-				$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJMB) -o $(NAMEB) -L$(LIBFTDIR) -lft
-				@echo $(RESET)
+$(NAMEB):	$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJMB)
+		@echo $(GREEN)"BONUS PART: Linking objects & creating checker"
+		$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJMB) -o $(NAMEB) -L$(LIBFTDIR) -lft
+		@echo $(RESET)
 
-$(NAMEBE):		$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJBE)
-				@echo $(GREEN)"BONUS PART: Linking objects & creating checker"
-				$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJBE) -o $(NAMEBE) -L$(LIBFTDIR) -lft
-				@echo $(RESET)
+$(NAMEBE):	$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJBE)
+		@echo $(GREEN)"BONUS PART: Linking objects & creating checker"
+		$(CC) $(CFLAGS) -I $(INCDIR) $(OBJ) $(OBJBE) -o $(NAMEBE) -L$(LIBFTDIR) -lft
+		@echo $(RESET)
 
 libft:
-				@make -sC $(LIBFTDIR)
+		@make -sC $(LIBFTDIR)
 
-bonus:			$(NAMEB)
+bonus:		$(NAMEB)
 
-bonus2:			$(NAMEBE)
+bonus2:		$(NAMEBE)
 
 clean:
-				@echo $(RED)"CLEANING OBJS"
-				@rm -f $(OBJ)
-				@rm -f $(OBJ:.o=.d)
-				@rm -f $(OBJM)
-				@rm -f $(OBJM:.o=.d)
-				@rm -f $(OBJMB)
-				@rm -f $(OBJMB:.o=.d)
-				@rm -f $(OBJBE)
-				@rm -f $(OBJBE:.o=.d)
-				@echo $(RESET)
+		@echo $(RED)"CLEANING OBJS"
+		@rm -f $(OBJ)
+		@rm -f $(OBJ:.o=.d)
+		@rm -f $(OBJM)
+		@rm -f $(OBJM:.o=.d)
+		@rm -f $(OBJMB)
+		@rm -f $(OBJMB:.o=.d)
+		@rm -f $(OBJBE)
+		@rm -f $(OBJBE:.o=.d)
+		@echo $(RESET)
 
-fclean:			clean
-				@echo $(RED)"CLEANING ALL"
-				@rm -f $(NAME)
-				@rm -f $(NAMEB)
-				@rm -f $(NAMEBE)
-				@rm -f *.out
-				@rm -rf *.dSYM
-				@echo "\nCLEANING LIBFT\n"
-				@make -sC $(LIBFTDIR) fclean
-				@echo $(RESET)
+fclean:		clean
+		@echo $(RED)"CLEANING ALL"
+		@rm -f $(NAME)
+		@rm -f $(NAMEB)
+		@rm -f $(NAMEBE)
+		@rm -f *.out
+		@rm -rf *.dSYM
+		@echo "\nCLEANING LIBFT\n"
+		@make -sC $(LIBFTDIR) fclean
+		@echo $(RESET)
 
-re:				fclean
-				@make all
+re:		fclean
+		@make -s all
 
-.PHONY:			all clean fclean re bonus libft
+.PHONY:		all clean fclean re bonus libft
 
--include		$(OBJ:.o=.d) $(OBJM:.o=.d) $(OBJMB:.o=.d) $(OBJBE:.o=.d)
+-include	$(OBJ:.o=.d) $(OBJM:.o=.d) $(OBJMB:.o=.d) $(OBJBE:.o=.d)
