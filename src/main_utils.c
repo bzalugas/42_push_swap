@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 13:28:33 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/23 16:50:32 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:22:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	parse_one(char *arg, t_stacks *s)
 			return (0);
 		stacks_add_a(s, (int)n);
 		i += tmp;
+		if (arg[i] && !ft_isspace(arg[i]))
+			return (0);
 		while (ft_isspace(arg[i]))
 			i++;
 	}
