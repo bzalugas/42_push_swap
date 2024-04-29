@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:05:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/25 01:05:24 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:49:23 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,25 @@ void	*stacks_clear(t_stacks *stacks)
 	free(stacks->b);
 	ft_cmdclear(&stacks->cmds, NULL);
 	return (NULL);
+}
+
+void	stacks_quartiles(t_stacks *s)
+{
+	int		i;
+	int		j;
+	t_frame	*tmp;
+
+	get_all_real_targets(s);
+	tmp = stack_get_min(s->a);
+	i = 0;
+	j = 0;
+	while (i < s->total)
+	{
+		write(1, "here\n", 5);
+		if (i == s->a->mid / 2 || i == s->a->mid
+			|| i == ((3 * s->total) / 4) || i == s->total - 1)
+			s->quartiles[j++] = tmp;
+		tmp = tmp->target;
+		i++;
+	}
 }
