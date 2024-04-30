@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:59:29 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/04/29 16:39:23 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:04:27 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ static void	push_frame(t_stacks *s, t_stack *from, t_stack *to, t_frame *f)
 	push_to(s, to);
 }
 
-void	push_quartiles(t_stacks *s)
+void	push_quartile(t_stacks *s, int quart) // maybe change this function to do
+											  // all pushes
 {
 	t_frame	*cheapest;
 	int		cost;
@@ -62,19 +63,20 @@ void	push_quartiles(t_stacks *s)
 
 	min_cost = 0;
 	cheapest = NULL;
-	top = s->a->top;
-	while (top && s->a->size > 3)
+	top = s->quartiles[0];
+	while (top && s->a->size > 3 && (min_cost == 0 || min_cost > 1))
 	{
-		get_b_target(s->b, top, true);
-		cost = cost_push(s->a, s->b, top);
-		if (min_cost == 0 || cost < min_cost)
+		if (top->quart == quart)
 		{
-			min_cost = cost;
-			cheapest = top;
+			get_b_target(s->b, top, true);
+			cost = cost_push(s->a, s->b, top);
+			if (min_cost == 0 || cost < min_cost)
+			{
+				min_cost = cost;
+				cheapest = top;
+			}
+			top = top->next;
 		}
-		top = top->next;
-		if (min_cost == 1)
-			top = NULL;
 	}
 	if (cheapest)
 		push_frame(s, s->a, s->b, cheapest);

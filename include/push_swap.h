@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/04/29 17:33:37 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:53:08 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_frame
 {
 	int				n;
 	int				i;
+	int				quart;
 	struct s_frame	*target;
 	struct s_frame	*prev;
 	struct s_frame	*next;
@@ -54,7 +55,7 @@ typedef struct s_stacks
 	t_stack	*a;
 	t_stack	*b;
 	int		total;
-	t_frame	*quartiles[4];
+	t_frame	*quartiles[5];
 	t_list	*cmds;
 }				t_stacks;
 
