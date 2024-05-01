@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:16:50 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/04/29 17:33:13 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/01 01:34:19 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,18 @@ void	get_all_real_targets(t_stacks *s)
 	while (top)
 	{
 		get_real_target(s, top, true);
+		top = top->next;
+	}
+}
+
+void	get_all_a_targets(t_stacks *s)
+{
+	t_frame	*top;
+
+	top = s->a->top;
+	while (top)
+	{
+		get_a_target(s->a, top, true);
 		top = top->next;
 	}
 }

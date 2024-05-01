@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/04/30 14:53:08 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/01 05:19:52 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,11 @@ t_frame			*get_a_target(t_stack *from, t_frame *f, bool set);
 t_frame			*get_b_target(t_stack *from, t_frame *f, bool set);
 t_frame			*get_real_target(t_stacks *s, t_frame *f, bool set);
 void			get_all_real_targets(t_stacks *s);
+void			get_all_a_targets(t_stacks *s);
 void			push_non_sorted(t_stacks *s);
+int				push_quartile(t_stacks *s, int quart);
 void			get_back_b(t_stacks *s);
+void			get_back_quartiles(t_stacks *s);
 void			sort(t_stacks *s);
 
 /********************************** UTILS *************************************/

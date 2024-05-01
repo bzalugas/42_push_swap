@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:04:56 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/04/29 16:28:22 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/01 03:10:38 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	stack_score(t_stack *s)
 			|| (top->next && (top->next->n > top->n)))
 			score++;
 		else if (top->next && top == max && top->next == min)
+			score++;
+		else if (!top->next && top == max)
 			score++;
 		top = top->next;
 	}

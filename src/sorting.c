@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:50:45 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/04/30 14:50:18 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/01 06:03:39 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,30 @@ static void	order_stack(t_stacks *s)
 
 void	sort_big(t_stacks *s)
 {
-	stacks_quartiles(s);
+	int	quartile;
 
+	quartile = 1;
+	stacks_quartiles(s);
+	while (stack_score(s->a) != s->total)
+	{
+		if (s->a->size == 3)
+		{
+			sort_three(s);
+			get_back_quartiles(s);
+			/* get_back_b(s); */
+		}
+		else
+		{
+			if (quartile < 5 && !push_quartile(s, quartile))
+				quartile++;
+		}
+	}
+	order_stack(s);
 }
 
 void	sort(t_stacks *s)
 {
-	sort_big(s);
-	return ;
-	if (s->total >= 250)
+	if (s->total >= 200)
 	{
 		sort_big(s);
 		return ;

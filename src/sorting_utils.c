@@ -6,13 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:59:29 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/04/30 15:04:27 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/01 05:26:56 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static int	cost_push(t_stack *from, t_stack *to, t_frame *f)
+static int	cost_push(t_stack *from, t_stack *to, t_frame *f, bool use_target)
 {
 	int	cost;
 	int	cost_f;
@@ -22,7 +22,7 @@ static int	cost_push(t_stack *from, t_stack *to, t_frame *f)
 		cost_f = f->i;
 	else
 		cost_f = from->size - f->i;
-	if (!f->target)
+	if (!f->target || use_target == false)
 		return (cost_f + 1);
 	if (f->target->i <= to->mid)
 		cost_t = f->target->i;
@@ -53,8 +53,7 @@ static void	push_frame(t_stacks *s, t_stack *from, t_stack *to, t_frame *f)
 	push_to(s, to);
 }
 
-void	push_quartile(t_stacks *s, int quart) // maybe change this function to do
-											  // all pushes
+int	push_quartile(t_stacks *s, int quart)
 {
 	t_frame	*cheapest;
 	int		cost;
@@ -63,23 +62,69 @@ void	push_quartile(t_stacks *s, int quart) // maybe change this function to do
 
 	min_cost = 0;
 	cheapest = NULL;
-	top = s->quartiles[0];
+	top = s->a->top;
 	while (top && s->a->size > 3 && (min_cost == 0 || min_cost > 1))
 	{
 		if (top->quart == quart)
 		{
-			get_b_target(s->b, top, true);
-			cost = cost_push(s->a, s->b, top);
+			top->target = s->b->top;
+			cost = cost_push(s->a, s->b, top, false);
 			if (min_cost == 0 || cost < min_cost)
 			{
 				min_cost = cost;
 				cheapest = top;
 			}
-			top = top->next;
 		}
+		top = top->next;
 	}
-	if (cheapest)
-		push_frame(s, s->a, s->b, cheapest);
+	if (!cheapest)
+		return (0);
+	return (push_frame(s, s->a, s->b, cheapest),1);
+}
+
+static int	get_back_quartile(t_stacks *s, int quart)
+{
+	t_frame	*cheapest;
+	int		cost;
+	int		min_cost;
+	t_frame	*top;
+
+	min_cost = 0;
+	cheapest = NULL;
+	top = s->b->top;
+	while (top && min_cost != 1)
+	{
+		if (top->quart == quart)
+		{
+			top->target = get_a_target(s->a, top, true);
+			cost = cost_push(s->b, s->a, top, true);
+			if (min_cost == 0 || cost < min_cost)
+			{
+				min_cost = cost;
+				cheapest = top;
+			}
+		}
+		top = top->next;
+	}
+	if (!cheapest)
+		return (0);
+	return (push_frame(s, s->b, s->a, cheapest), 1);
+
+}
+
+void	get_back_quartiles(t_stacks *s)
+{
+	int	quart;
+
+	if (s->total < 300)
+		quart = 2;
+	else
+		quart = 4;
+	while (quart > 0)
+	{
+		if (!get_back_quartile(s, quart))
+			quart--;
+	}
 }
 
 void	push_non_sorted(t_stacks *s)
@@ -95,7 +140,7 @@ void	push_non_sorted(t_stacks *s)
 	while (top && s->a->size > 3)
 	{
 		get_b_target(s->b, top, true);
-		cost = cost_push(s->a, s->b, top);
+		cost = cost_push(s->a, s->b, top, true);
 		if (min_cost == 0 || cost < min_cost)
 		{
 			min_cost = cost;
@@ -124,7 +169,7 @@ void	get_back_b(t_stacks *s)
 		while (top && min_cost != 1)
 		{
 			get_a_target(s->a, top, true);
-			cost = cost_push(s->b, s->a, top);
+			cost = cost_push(s->b, s->a, top, true);
 			if (min_cost == 0 || cost < min_cost)
 			{
 				min_cost = cost;
