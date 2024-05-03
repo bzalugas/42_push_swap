@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:05:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/03 00:51:17 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/03 06:26:22 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	stacks_quartiles(t_stacks *s)
 	{
 		tmp->quart = j;
 		if (i == s->a->mid / 2 || i == s->a->mid || i == (3 * s->a->size) / 4)
-			 j++;
+			j++;
 		tmp = tmp->target;
 		i++;
 	}

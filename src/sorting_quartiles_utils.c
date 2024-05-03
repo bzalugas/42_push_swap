@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:27:17 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/02 17:27:38 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/03 06:26:54 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	push_quartile(t_stacks *s, int quart)
 	}
 	if (!cheapest)
 		return (0);
-	return (push_frame(s, s->a, s->b, cheapest),1);
+	return (push_frame(s, s->a, s->b, cheapest), 1);
 }
 
 static int	get_back_quartile(t_stacks *s, int quart)
@@ -68,7 +68,6 @@ static int	get_back_quartile(t_stacks *s, int quart)
 	if (!cheapest)
 		return (0);
 	return (push_frame(s, s->b, s->a, cheapest), 1);
-
 }
 
 void	get_back_quartiles(t_stacks *s)
