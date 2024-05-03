@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:59:29 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/03 06:41:16 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/03 07:40:01 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int	cost_push(t_stack *from, t_stack *to, t_frame *f, bool use_target)
 		|| (f->i > from->mid && f->target->i > to->mid))
 		cost = ft_max_int(cost_f, cost_t);
 	else
-		cost = ft_min_int(ft_max_int(from->size - f->i,
-					to->size - f->target->i), ft_max_int(f->i, f->target->i));
+		cost = ft_max_int(from->size - f->i, to->size - f->target->i); //????
 	cost = ft_min_int(cost_f + cost_t, cost);
 	return (cost + 1);
 }
