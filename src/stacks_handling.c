@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:05:07 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/01 06:05:37 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/03 00:51:17 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,13 @@ void	stacks_quartiles(t_stacks *s)
 
 	get_all_a_targets(s);
 	tmp = stack_get_min(s->a);
-	s->quartiles[0] = tmp;
 	i = 0;
 	j = 1;
 	while (s->total >= 300 && i < s->a->size)
 	{
 		tmp->quart = j;
-		if (i == s->a->mid / 2 || i == s->a->mid || i == (3 * s->a->size) / 4
-			|| i == s->a->size - 1)
-			s->quartiles[j++] = tmp;
+		if (i == s->a->mid / 2 || i == s->a->mid || i == (3 * s->a->size) / 4)
+			 j++;
 		tmp = tmp->target;
 		i++;
 	}
@@ -84,7 +82,7 @@ void	stacks_quartiles(t_stacks *s)
 	{
 		tmp->quart = j;
 		if (i == s->a->mid || i == s->a->size - 1)
-			s->quartiles[j++] = tmp;
+			j++;
 		tmp = tmp->target;
 		i++;
 	}

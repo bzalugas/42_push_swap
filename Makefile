@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 19:03:20 by bazaluga          #+#    #+#              #
-#    Updated: 2024/04/26 10:59:24 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/05/02 19:24:41 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -53,7 +53,7 @@ OBJBE		:=	$(addprefix $(OBJDIR)/, $(OBJBE))
 SRC		:=	op_push.c op_revrotate.c op_rotate.c op_swap.c stack_handling.c \
 			stack_handling2.c stacks_handling.c ft_atol_forward.c \
 			main_utils.c ft_abs.c lst_cmds.c ft_min_int.c ft_max_int.c sorting.c \
-			target_handling.c sorting_utils.c ft_lstremove.c
+			target_handling.c sorting_utils.c ft_lstremove.c sorting_quartiles_utils.c
 
 OBJ		:=	$(SRC:.c=.o)
 
@@ -84,6 +84,7 @@ $(OBJDIR)/%.o:	$(SRCDIR)/%.c | $(OBJDIR)
 $(REALLIBFT):
 		@echo $(GREEN)"Compiling libft"$(RESET)
 		@make -sC $(LIBFTDIR)
+		@echo "\n"
 
 $(NAME):	$(LIBFTDIR)/$(LIBFT) $(OBJ) $(OBJM)
 		@echo $(GREEN)"MANDATORY PART: Linking objects & creating push_swap"
