@@ -121,8 +121,10 @@ int				parse_push_swap(int ac, char *av[], t_stacks *s);
 char			*op_to_text(void *content);
 int				ft_cmdadd_back(t_list **lst, t_op op);
 void			ft_cmdclear(t_list **lst, void (*del)(void *));
-int				ft_max_int(int a, int b);
-int				ft_min_int(int a, int b);
+int				ft_max(int a, int b);
+int				*ft_max_arr(int *arr,  size_t len);
+int				ft_min(int a, int b);
+int				*ft_min_arr(int *arr,  size_t len);
 void			ft_lstremove(t_list **lst, t_list *link, void (*del)(void *));
 
 /******************************* TESTS ****************************************/
