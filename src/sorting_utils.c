@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 11:59:29 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/06 22:38:07 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/06 22:52:44 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		cost2(t_stack *from, t_stack *to, t_frame *f, bool use_target)
 		if (cost == f->i)
 			f->next_ops[0] = R;
 		else
-			f->next_ops[0] = RR;
+			f->next_ops[0] = RRO;
 		return (cost + 1);
 	}
 	costs[0] = ft_max(f->i, f->target->i);
@@ -109,7 +109,6 @@ void	push_non_sorted(t_stacks *s)
 	/* int		cost1; */
 	/* int		min_cost1; */
 	t_frame	*top;
-	int real;
 	/* static int n = 0; */
 
 	/* n++; */
