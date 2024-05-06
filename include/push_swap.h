@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/03 06:15:52 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/06 22:36:22 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 typedef enum e_op
 {
-	S,
+	S = 1,
 	R,
 	RRO,
 	SA,
@@ -37,6 +37,7 @@ typedef struct s_frame
 	int				n;
 	int				i;
 	int				quart;
+	t_op			next_ops[2];
 	struct s_frame	*target;
 	struct s_frame	*prev;
 	struct s_frame	*next;
