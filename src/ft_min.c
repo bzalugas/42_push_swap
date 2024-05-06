@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:51:43 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/06 16:36:08 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/06 23:02:19 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_min(int a, int b)
 	return (b);
 }
 
-int	*ft_min_arr(int *arr,  size_t len)
+int	*ft_min_arr(int *arr, size_t len)
 {
 	size_t	i;
 	int		*min;

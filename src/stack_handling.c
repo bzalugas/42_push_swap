@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:31:34 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/06 18:38:34 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/06 23:01:46 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_frame	*frame_new(int n, int i, t_frame *prev, t_frame *next)
 	new = (t_frame *)ft_calloc(1, sizeof(t_frame));
 	if (!new)
 		return (NULL);
-	*new = (t_frame){n, i, 0, {0,0}, NULL, prev, next};
+	*new = (t_frame){n, i, 0, {0, 0}, NULL, prev, next};
 	return (new);
 }
 

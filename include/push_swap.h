@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/06 22:41:15 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/06 22:58:37 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,6 @@ void			get_all_real_targets(t_stacks *s);
 void			get_all_a_targets(t_stacks *s);
 int				cost_push(t_stack *from, t_stack *to, t_frame *f,
 						  bool use_target);
-int		cost2(t_stack *from, t_stack *to, t_frame *f, bool use_target);
-void	push_2(t_stacks *s, t_stack *from, t_stack *to, t_frame *f);
 void			push_frame(t_stacks *s, t_stack *from, t_stack *to, t_frame *f);
 void			push_non_sorted(t_stacks *s);
 int				push_quartile(t_stacks *s, int quart);
