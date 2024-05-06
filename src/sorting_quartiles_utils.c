@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:27:17 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/03 07:40:34 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/06 22:48:05 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	push_quartile(t_stacks *s, int quart)
 		if (top->quart == quart)
 		{
 			top->target = s->b->top;
-			cost = cost_push(s->a, s->b, top, false);
+			cost = cost2(s->a, s->b, top, false);
 			if (min_cost == 0 || cost < min_cost)
 			{
 				min_cost = cost;
@@ -38,7 +38,7 @@ int	push_quartile(t_stacks *s, int quart)
 	}
 	if (!cheapest)
 		return (0);
-	return (push_frame(s, s->a, s->b, cheapest),1);
+	return (push_2(s, s->a, s->b, cheapest),1);
 }
 
 static int	get_back_quartile(t_stacks *s, int quart)
@@ -56,7 +56,7 @@ static int	get_back_quartile(t_stacks *s, int quart)
 		if (top->quart == quart)
 		{
 			top->target = get_a_target(s->a, top, true);
-			cost = cost_push(s->b, s->a, top, true);
+			cost = cost2(s->b, s->a, top, true);
 			if (min_cost == 0 || cost < min_cost)
 			{
 				min_cost = cost;
@@ -67,7 +67,7 @@ static int	get_back_quartile(t_stacks *s, int quart)
 	}
 	if (!cheapest)
 		return (0);
-	return (push_frame(s, s->b, s->a, cheapest), 1);
+	return (push_2(s, s->b, s->a, cheapest), 1);
 
 }
 
