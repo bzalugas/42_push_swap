@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 14:00:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/03/14 11:06:30 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:04:58 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static int	get_do_ops(t_stacks *s)
 	line = get_next_line(0);
 	while (line)
 	{
-		count++;
-		do_fun(s, line);
+		if (do_fun(s, line))
+			count++;
 		display_stacks(s);
 		free(line);
 		line = get_next_line(0);
