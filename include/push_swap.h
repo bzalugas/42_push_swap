@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:31:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/06 22:58:37 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:29:19 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_frame			*get_real_target(t_stacks *s, t_frame *f, bool set);
 void			get_all_real_targets(t_stacks *s);
 void			get_all_a_targets(t_stacks *s);
 int				cost_push(t_stack *from, t_stack *to, t_frame *f,
-						  bool use_target);
+					bool use_target);
 void			push_frame(t_stacks *s, t_stack *from, t_stack *to, t_frame *f);
 void			push_non_sorted(t_stacks *s);
 int				push_quartile(t_stacks *s, int quart);
@@ -123,9 +123,9 @@ char			*op_to_text(void *content);
 int				ft_cmdadd_back(t_list **lst, t_op op);
 void			ft_cmdclear(t_list **lst, void (*del)(void *));
 int				ft_max(int a, int b);
-int				*ft_max_arr(int *arr,  size_t len);
+int				*ft_max_arr(int *arr, size_t len);
 int				ft_min(int a, int b);
-int				*ft_min_arr(int *arr,  size_t len);
+int				*ft_min_arr(int *arr, size_t len);
 void			ft_lstremove(t_list **lst, t_list *link, void (*del)(void *));
 
 /******************************* TESTS ****************************************/
